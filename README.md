@@ -1,1 +1,1 @@
-# ESTUStat_2023Spring_MachineLearningMethodsandApplications
+# MachineLearning Methods and Applications

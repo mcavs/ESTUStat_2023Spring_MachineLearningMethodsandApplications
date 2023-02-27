@@ -5,6 +5,14 @@ This a undergraduate course repository of Machine Learning Methods and Applicati
 
 ## Contents
 
-### Week 1. Introduction to Machine Learning - Feb 27, 2023 - 14.00 - [Online:Zoom](https://us05web.zoom.us/j/7869396483?pwd=U3pHRTFqNTlpRmd3a25rSklnMEZ1QT09)
+### Week 1. Introduction to Machine Learning - Feb 27, 2023 - 14.00 - Online:Zoom
 
-[Lecture notes]() - [Applications]()
+[Lecture notes]() - [Lecture video]()
+
+
+### Week 2. Introduction to Machine Learning - Feb 27, 2023 - 14.00 - [Online:Zoom](https://us05web.zoom.us/j/7869396483?pwd=U3pHRTFqNTlpRmd3a25rSklnMEZ1QT09)
+
+
+
+
+

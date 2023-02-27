@@ -43,6 +43,7 @@ This a undergraduate course repository of Machine Learning Methods and Applicati
 
 **Week 12.** ... - May 29, 2023 - 14.00
 
-# Contact: Mustafa Cavus, Ph.D. 📧 [mustafacavus@eskisehir.edu.tr](mustafacavus@eskisehir.edu.tr)
+
+📧 Contact: Mustafa Cavus, Ph.D. - [mustafacavus@eskisehir.edu.tr](mustafacavus@eskisehir.edu.tr)
 
 

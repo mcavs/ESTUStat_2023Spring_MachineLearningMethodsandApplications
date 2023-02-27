@@ -2,13 +2,13 @@
 
 This a undergraduate course repository of Machine Learning Methods and Applications at Eskisehir Technical University, Department of Statistics.
 
-## Book
+## Book 📚
 
 [Hastie, Tibshirani and Friedman - The Elements of Statistical Learning: Data Mining, Inference, and Prediction](https://hastie.su.domains/Papers/ESLII.pdf)
 
-## Contents
+## Contents 📂
 
-**Week 1.** Introduction to Machine Learning - Feb 27, 2023 - 14.00 - Online:Zoom ([Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week1.pdf) - Video)
+**Week 1.** Introduction to Machine Learning - Feb 27, 2023 - 14.00 - Online:Zoom ([Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week1.pdf) 📖 - Video 📺)
 
 
 **Week 2.** Supervised Learning: Linear regression models - Mar 6, 2023 - 14.00 - [Online:Zoom](https://us05web.zoom.us/j/7869396483?pwd=U3pHRTFqNTlpRmd3a25rSklnMEZ1QT09)
@@ -43,7 +43,6 @@ This a undergraduate course repository of Machine Learning Methods and Applicati
 
 **Week 12.** ... - May 29, 2023 - 14.00
 
-
-
+# Contact: Mustafa Cavus, Ph.D. 📧 [mustafacavus@eskisehir.edu.tr](mustafacavus@eskisehir.edu.tr)
 
 

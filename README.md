@@ -2,9 +2,11 @@
 
 This a undergraduate course repository of Machine Learning Methods and Applications at Eskisehir Technical University, Department of Statistics.
 
-## Book 📚
+## Books 📚
 
-[Hastie, Tibshirani and Friedman - The Elements of Statistical Learning: Data Mining, Inference, and Prediction](https://hastie.su.domains/Papers/ESLII.pdf)
+1. [Hastie, Tibshirani & Friedman - The Elements of Statistical Learning: Data Mining, Inference, and Prediction](https://hastie.su.domains/Papers/ESLII.pdf)
+
+2. [Boehmke & Greenwell - Hands-On Machine Learning with R](https://bradleyboehmke.github.io/HOML/)
 
 ## Contents 📂
 

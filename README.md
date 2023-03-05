@@ -13,7 +13,7 @@ This a undergraduate course repository of Machine Learning Methods and Applicati
 **Week 1.** Introduction to Machine Learning - Feb 27, 2023 - 14.00 - 📖 [Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week1.pdf) -  📺 [Video](https://youtu.be/OlsD9aKl-So)
 
 
-**Week 2.** Supervised Learning: Linear regression models - Mar 6, 2023 - 14.00 - [Online:Zoom](https://us05web.zoom.us/j/7869396483?pwd=U3pHRTFqNTlpRmd3a25rSklnMEZ1QT09)
+**Week 2.** Supervised Learning: Linear regression models - Mar 6, 2023 - 14.00 - [Online:Zoom](https://us05web.zoom.us/j/7869396483?pwd=U3pHRTFqNTlpRmd3a25rSklnMEZ1QT09)  - 📖 [Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week2.pdf) -  :computer: [Applications](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/Application/I%CC%87ST438-W2.pdf)
 
 
 **Week 3.** Supervised Learning: Supervised Learning: Logistic regression models - Mar 13, 2023 - 14.00

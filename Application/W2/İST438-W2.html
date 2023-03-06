@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2023-03-06">
+
+<title>IST438-W2-Applications</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="İST438-W2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="İST438-W2_files/libs/quarto-html/quarto.js"></script>
+<script src="İST438-W2_files/libs/quarto-html/popper.min.js"></script>
+<script src="İST438-W2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="İST438-W2_files/libs/quarto-html/anchor.min.js"></script>
+<link href="İST438-W2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="İST438-W2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="İST438-W2_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="İST438-W2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="İST438-W2_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">IST438-W2-Applications</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 6, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="supervised-learning-linear-regression-models" class="level1">
+<h1>Supervised Learning: Linear Regression Models</h1>
+<p>In this application, we will interest the regression problem under the following sections:</p>
+<ul>
+<li>Training model</li>
+<li>Measuring model performance</li>
+<li>Checking over and underfitting problem</li>
+<li>Checking model assumptions</li>
+</ul>
+</section>
+<section id="packages" class="level1">
+<h1>Packages</h1>
+<p>We need to install <code>{DALEX}</code> package to use <code>apartments</code> data set in applications. Please use the two-step codes below: (1) install, (2) load the package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("DALEX")</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ggplot2")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("car")</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DALEX)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The first line is <code>hashtag</code>ed to faster this process. Do not forget to un-<code>hashtag</code> it in your first run. Because any line, which is hashtaged, is not run in R. It is turned the command line!</p>
+</section>
+<section id="dataset" class="level1">
+<h1>Dataset</h1>
+<p>We use the <code>apartments</code> data set from <code>{DALEX}</code> package. It has some features of the apartments in Warsaw, Poland.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calling apartments from {DALEX} package</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(apartments)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can use <code>str()</code> function to take a look data set. It returns a data frame consists information about the data set such as:</p>
+<ul>
+<li>number of observation</li>
+<li>number of features (variables)</li>
+<li>name of features</li>
+<li>type of features</li>
+<li>a few observations of features</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look to dataset </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(apartments)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1000 obs. of  6 variables:
+ $ m2.price         : num  5897 1818 3643 3517 3013 ...
+ $ construction.year: num  1953 1992 1937 1995 1992 ...
+ $ surface          : num  25 143 56 93 144 61 127 105 145 112 ...
+ $ floor            : int  3 9 1 7 6 6 8 8 6 9 ...
+ $ no.rooms         : num  1 5 2 3 5 2 5 4 6 4 ...
+ $ district         : Factor w/ 10 levels "Bemowo","Bielany",..: 6 2 5 4 3 6 3 7 6 6 ...</code></pre>
+</div>
+</div>
+</section>
+<section id="task-regression" class="level1">
+<h1>Task: Regression</h1>
+<p>In this application, we try to train a linear regression model on the <code>apartments</code> data set to predict the m^2 price of an intended apartment.</p>
+<section id="step-1---splitting-the-data-set" class="level2">
+<h2 class="anchored" data-anchor-id="step-1---splitting-the-data-set">Step 1 - Splitting the data set</h2>
+<p>We can use <code>sample()</code> function to split the data set as <code>test</code> and <code>train</code> set. Do not forget to set a seed to reproduce this process in future. It is important to get same observations in each run of these codes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># for reproducibility</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span> <span class="sc">:</span> <span class="fu">nrow</span>(apartments), <span class="fu">round</span>(<span class="fu">nrow</span>(apartments) <span class="sc">*</span> <span class="fl">0.80</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> apartments[index, ]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>test  <span class="ot">&lt;-</span> apartments[<span class="sc">-</span>index, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In the codes above, we get a sample from a vector has a length is equal to the number of observation in the data set. We must input a sequence as the first argument and the ratio of the train set as the second argument. Then we can save the randomly selected values of the sequence as <code>index</code> object. We can set the observations to <code>train</code> and <code>test</code> objects by using the <code>index</code> object.</p>
+</section>
+<section id="step-2---train-a-linear-regression-model" class="level2">
+<h2 class="anchored" data-anchor-id="step-2---train-a-linear-regression-model">Step 2 - Train a linear regression model</h2>
+<p>We can use the <code>lm()</code> function to train a linear regression model. It needs two obligatory arguments: (1) model formula and (2) data set that used to train the model. It is possible to define the model formula like <code>y ~ x1 + x2 + ...</code> where <code>y</code> is the target variable which is interested features to predict and <code>x</code>s are the features that used the information to predict the target variable.</p>
+<p>There is a tip about the model formula: you can use <code>y ~.</code> instead of defining all features you want to input to the model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lrm_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(m2.price <span class="sc">~</span> ., <span class="at">data =</span> train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In above, we train a linear regression model by using the <code>train</code> data that we splited in previous step and the model formula. Then, we assigned the output of <code>lm()</code> function to the <code>lrm_model</code> object. Do not forget that you can give another name to the model object whatever you want, because it is just an object!</p>
+<p>Let see the output of the model:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lrm_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = m2.price ~ ., data = train)
+
+Coefficients:
+        (Intercept)    construction.year              surface  
+           5404.531               -0.437              -10.139  
+              floor             no.rooms      districtBielany  
+            -99.236              -35.862               14.553  
+    districtMokotow       districtOchota        districtPraga  
+            928.000              938.294              -18.703  
+districtSrodmiescie        districtUrsus      districtUrsynow  
+           2077.514               38.646              -21.448  
+       districtWola     districtZoliborz  
+              5.154              890.673  </code></pre>
+</div>
+</div>
+<p>Model output returns the information about model formula, train data, and the estimated values of model parameters under the <code>Coefficients</code> title. You can see the numeric (continuous) features with its name, but the categorical features with <code>its name + name of the category</code> such as <code>districtOchota</code>.</p>
+<p>If you want to see more detail about the model, use the <code>summary()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lrm_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = m2.price ~ ., data = train)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-249.0 -201.4 -167.7  377.7  476.0 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         5404.5310   761.7231   7.095 2.89e-12 ***
+construction.year     -0.4370     0.3880  -1.126   0.2604    
+surface              -10.1388     0.6474 -15.660  &lt; 2e-16 ***
+floor                -99.2361     3.4140 -29.067  &lt; 2e-16 ***
+no.rooms             -35.8617    17.6361  -2.033   0.0423 *  
+districtBielany       14.5529    44.4367   0.327   0.7434    
+districtMokotow      927.9999    43.1075  21.528  &lt; 2e-16 ***
+districtOchota       938.2940    44.3454  21.159  &lt; 2e-16 ***
+districtPraga        -18.7035    44.6213  -0.419   0.6752    
+districtSrodmiescie 2077.5145    44.9024  46.267  &lt; 2e-16 ***
+districtUrsus         38.6455    43.9379   0.880   0.3794    
+districtUrsynow      -21.4476    43.0660  -0.498   0.6186    
+districtWola           5.1541    44.1533   0.117   0.9071    
+districtZoliborz     890.6728    44.4854  20.022  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 280.6 on 786 degrees of freedom
+Multiple R-squared:  0.9018,    Adjusted R-squared:  0.9002 
+F-statistic: 555.5 on 13 and 786 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>It returns some statistics about the residuals, the model parameters, and also some performance metric values such as the multiple R^2 and the adjusted R^2. These values show the model performance on train data.</p>
+</section>
+<section id="step-3---measuring-model-performance" class="level2">
+<h2 class="anchored" data-anchor-id="step-3---measuring-model-performance">Step 3 - Measuring model performance</h2>
+<p>It is necessary to check the model performance of the model on test set. Because we are interested to train such a model has a good generalizability performance. To do this, we first calculate the predicted values of the target variable on test set.</p>
+<p>Do not forget to exclude the true values of the target variable from the test set!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>predicted_y <span class="ot">&lt;-</span> <span class="fu">predict</span>(lrm_model, test[,<span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(predicted_y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       1        3        7        9       12       22 
+6041.446 3800.527 3210.712 4358.694 2995.008 3149.241 </code></pre>
+</div>
+</div>
+<p>Then, we can calculate some performance metrics of the trained model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> test<span class="sc">$</span>m2.price <span class="sc">-</span> predicted_y</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(error)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        1         3         7         9        12        22 
+-144.4463 -157.5273 -227.7120  386.3061 -198.0076 -153.2411 </code></pre>
+</div>
+</div>
+<p>Mean squared error (MSE), root mean squared error (RMSE), median absolute error (MAE) are the main performance metrics for the model used in regression task.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mse_model  <span class="ot">&lt;-</span> <span class="fu">mean</span>(error <span class="sc">^</span> <span class="dv">2</span>)  </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>rmse_model <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(error <span class="sc">^</span> <span class="dv">2</span>))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>mae_model  <span class="ot">&lt;-</span> <span class="fu">median</span>(<span class="fu">abs</span>(error))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s compare the values of these metrics:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mse_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 81266.28</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>rmse_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 285.0724</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mae_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 211.7335</code></pre>
+</div>
+</div>
+<p><strong>Q: What are differences between these metrics? Which of these should be used in which situations?</strong></p>
+</section>
+<section id="step-x1---checking-the-possible-over-and-underfitting-problem" class="level2">
+<h2 class="anchored" data-anchor-id="step-x1---checking-the-possible-over-and-underfitting-problem">Step X1 - Checking the possible over and underfitting problem</h2>
+<p>The way to check there is any problem related to over or underfitting in the model is to compare the model performance on train and test set. Let’s use the RMSE for this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>rmse_train <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((lrm_model<span class="sc">$</span>residuals) <span class="sc">^</span> <span class="dv">2</span>))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>rmse_test  <span class="ot">&lt;-</span> rmse_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Calculate the difference between th RMSE values:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>rmse_train <span class="sc">-</span> rmse_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -6.892241</code></pre>
+</div>
+</div>
+<p>The difference is negative means that the performance of the model is better on test set than train set. This may be a sign for overfitting problem because the model performance is better on test set. So, we may say that the model learn more from the train set that cause the poorer performance on test set. But there is no threshold to conclude that there is any problem related to over or underfitting. We can use this difference just as a sign!</p>
+</section>
+<section id="step-x2---checking-the-bias-and-variance-of-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="step-x2---checking-the-bias-and-variance-of-the-model">Step X2 - Checking the bias and variance of the model</h2>
+<p>Next week or later!</p>
+</section>
+<section id="step-x3---checking-the-model-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="step-x3---checking-the-model-assumptions">Step X3 - Checking the model assumptions</h2>
+<section id="linear-relationship-between-features-and-target-variable" class="level3">
+<h3 class="anchored" data-anchor-id="linear-relationship-between-features-and-target-variable">1. Linear relationship between features and target variable:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(train, <span class="fu">aes</span>(surface, m2.price)) <span class="sc">+</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">"m2.price"</span>) <span class="sc">+</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Surface"</span>) </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(train, <span class="fu">aes</span>(construction.year, m2.price)) <span class="sc">+</span> </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">4</span>) <span class="sc">+</span> </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="st">"m2.price"</span>) <span class="sc">+</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Construction year"</span>)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(train, <span class="fu">aes</span>(floor, m2.price)) <span class="sc">+</span> </span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">4</span>) <span class="sc">+</span> </span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="st">"m2.price"</span>) <span class="sc">+</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Floor"</span>)</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(train, <span class="fu">aes</span>(no.rooms, m2.price)) <span class="sc">+</span> </span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">4</span>) <span class="sc">+</span> </span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="st">"m2.price"</span>) <span class="sc">+</span></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Number of rooms"</span>)</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(p1, p2, p3, p4, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="İST438-W2_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Solutions for non-linearity:</p>
+<ul>
+<li>Use non-linear models (nonlinear regression or other ML models)</li>
+<li>Transform X and/or Y to obtain a linear relationship using Box-Cox, inverse, or etc.</li>
+</ul>
+</section>
+<section id="constant-variance-among-residuals-errors" class="level3">
+<h3 class="anchored" data-anchor-id="constant-variance-among-residuals-errors">2. Constant variance among residuals (errors)</h3>
+<p>The errors (residuals) must follows normal distribution with a constant variance. We can check this assumption by using the Shapiro-Wilk test or visual diagnostics.</p>
+<p>Let’s try to use Shapiro-Wilk test first:</p>
+<p>Null hypothesis: errors follow normal the distribution Alternative hypothesis: errors do not follow the normal distribution</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(lrm_model<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  lrm_model$residuals
+W = 0.68126, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Because of the p-value is close to <span class="math inline">\(0\)</span>, and less than <span class="math inline">\(0.05\)</span>, there is enough evidence to reject the null hypothesis. This means that the errors do not follow the normal distribution.</p>
+<p>We may see the visual diagnostics to check the constant variance, but in this case it is not necessary because error do not follow normal distribution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>con_var <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">fitted =</span> lrm_model<span class="sc">$</span>fitted.values,</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">resid  =</span> lrm_model<span class="sc">$</span>residuals)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(con_var, <span class="fu">aes</span>(fitted, resid)) <span class="sc">+</span> </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Predicted values"</span>) <span class="sc">+</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Residuals"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="İST438-W2_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In the plot above, the points must be distributed along the line <span class="math inline">\(y = 0\)</span> with a constant pattern in ideal case.</p>
+</section>
+<section id="no-autocorrelation-between-features-independent-variables" class="level3">
+<h3 class="anchored" data-anchor-id="no-autocorrelation-between-features-independent-variables">3. No autocorrelation between features (independent variables)</h3>
+<p>Linear regression assumes the errors are independent and uncorrelated. If in fact, there is correlation among the errors, then the estimated standard errors of the coefficients will be biased leading to prediction intervals being narrower than they should be.</p>
+<p>To test the autocorrelation of the residuals, you can use the Durbin-Watson test with the following hypotheses:</p>
+<p>Null hypothesis: <span class="math inline">\(\rho_r = 0\)</span> Alternative hypothesis: <span class="math inline">\(\rho_r \neq 0\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">durbinWatsonTest</span>(lrm_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> lag Autocorrelation D-W Statistic p-value
+   1     -0.02788732      2.054854   0.456
+ Alternative hypothesis: rho != 0</code></pre>
+</div>
+</div>
+<p>Because of the p-value is <span class="math inline">\(0.418 &gt; 0.05\)</span>, there is no evidence to reject the null hypothesis. This means that the residuals are not autocorrelated at <span class="math inline">\(95\%\)</span> significance level.</p>
+</section>
+<section id="more-observation-than-predictors-n-p" class="level3">
+<h3 class="anchored" data-anchor-id="more-observation-than-predictors-n-p">4. More observation than predictors (n &gt; p)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># n: number of observations</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># p: number of predictors</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">dim</span>(train)[<span class="dv">1</span>] </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">dim</span>(train)[<span class="dv">2</span>] <span class="sc">-</span> <span class="dv">1</span> <span class="co"># Do not forget to minus the target features because it is not a predictor!</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>n <span class="sc">&gt;</span> p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="no-multicollinearity-between-features-independent-variables" class="level3">
+<h3 class="anchored" data-anchor-id="no-multicollinearity-between-features-independent-variables">5. No multicollinearity between features (independent variables)</h3>
+<p><strong>Collinearity</strong> refers to the situation in which two or more predictor variables are closely related to one another. The presence of collinearity can pose problems in the estimation of model parameters, since it can be difficult to separate out the individual effects of collinear variables on the response. In fact, collinearity can cause predictor variables to appear as statistically insignificant when in fact they are significant. This obviously leads to an inaccurate interpretation of coefficients and makes it difficult to identify influential predictors.</p>
+<p>We can use the Variance Inflation Factors (VIFs) to measure the collinearity between features. Let’s calculate the VIFs by using the <code>vif()</code> function in <code>{car}</code> package:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(lrm_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      GVIF Df GVIF^(1/(2*Df))
+construction.year 1.016111  1        1.008023
+surface           5.989268  1        2.447298
+floor             1.015405  1        1.007673
+no.rooms          5.986822  1        2.446798
+district          1.037010  9        1.002021</code></pre>
+</div>
+</div>
+<p>If there is any feature has a GVIF value higher than 5 or 10, it may be correlated with the any of other features in the model. There is no consensus about the threshold for multicollinearity, but it is accepted that there is a multicollinearity problem if the VIF/GVIF values are higher than 10 To make the valid this assumption, the easiest solution is to exclude this feature from the model, or you may use more complex regression model instead of linear regression model.</p>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

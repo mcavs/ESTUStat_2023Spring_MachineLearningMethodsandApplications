@@ -40,7 +40,7 @@ Task 5: ET, BÇ, BT, MAT, FG, ZÖ
 
 ## Grading
 
-* Please prepare a report in PDF format by using Quarto or Jupyter Notebook (**no any other pubishing tool!**) consisting the points in the instructions in your task.
+* Please prepare a report in PDF format by using Quarto or Jupyter Notebook (**no any other pubishing way or tool!**)  with R / Python consisting the points in the instructions in your task.
 * The report must be submitted until Mar 25, 23:59 to this repository with your initial. **Late submissions are not be evaluated.**
 * All items in the instructions must be done with interpretated (Explain what you did and find). 
 * **The assignment will not be evaluated if any of the above items are not met.**

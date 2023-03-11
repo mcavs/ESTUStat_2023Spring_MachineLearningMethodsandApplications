@@ -1,0 +1,227 @@
+---
+title: "IST438-W3-Applications"
+date:  "Mar 13, 2023"
+format: pdf
+editor: visual 
+---
+
+# Supervised Learning: Logistic Regression Models
+
+In this application, we will interest the regression problem under the following sections:
+
+-   Training model
+-   Measuring model performance
+-   Checking over and underfitting problem
+
+
+# Packages
+
+We need to install `{DALEX}` package to use `titanic` data set in applications. Please use the two-step codes below: (1) install, (2) load the package.
+
+```{r, warning = FALSE, message = FALSE}
+# install.packages("DALEX")
+# install.packages("caret")
+# install.packages("ROCR")
+library(DALEX)
+library(caret)
+library(ROCR)
+```
+
+The first line is `hashtag`ed to faster this process. Do not forget to un-`hashtag` it in your first run. Because any line, which is hashtaged, is not run in R. It is turned the command line!
+
+# Dataset
+
+We use the `titanic` data set from `{DALEX}` package. The task is to predict the survival probability of the passangers in Titanic. The data set contains several informations about the passenger and their survive status.
+
+```{r}
+# calling titanic from {DALEX} package
+data(titanic)
+```
+
+You can use `str()` function to take a look data set. It returns a data frame consists information about the data set such as:
+
+-   number of observation
+-   number of features (variables)
+-   name of features
+-   type of features
+-   a few observations of features
+
+```{r}
+# Take a look to dataset 
+str(titanic)
+```
+
+
+Remove `country` feature from the data set. It is a problematic categorical feature in model training, because it has many classes. 
+
+```{r}
+titanic <- titanic[, -5]
+```
+
+Remove missing observations in the dataset or you can impute them but if the number of observations is enough, to remove missing observations is easier way to handle missing data. It is necessary because when you split data set, some of the classes may not be seen in the train set then the model can not learn anything about these classes. Thus, it is not possible to predict the value of target feature with the predictors (features) that have these unseen classes.
+
+```{r}
+titanic <- na.exclude(titanic)
+```
+
+
+
+# Task: Classification
+
+In this application, we try to train a logistic regression model on the `titanic` data set to predict the survive probability of the passangers.
+
+## Step 1 - Splitting the data set
+
+We can use `sample()` function to split the data set as `test` and `train` set. Do not forget to set a seed to reproduce this process in future. It is important to get same observations in each run of these codes.
+
+```{r}
+set.seed(123) # for reproducibility
+index <- sample(1 : nrow(titanic), round(nrow(titanic) * 0.80))
+train <- titanic[index, ]
+test  <- titanic[-index, ]
+```
+
+In the codes above, we get a sample from a vector has a length is equal to the number of observation in the data set. We must input a sequence as the first argument and the ratio of the train set as the second argument. Then we can save the randomly selected values of the sequence as `index` object. We can set the observations to `train` and `test` objects by using the `index` object.
+
+## Step 2 - Train a logistic regression model
+
+We can use the `glm()` function to train a logistic regression model. It needs three obligatory arguments: (1) model formula, (2) data set that used to train the modeli and (3) the family distribution of the target feature. It must be setted as "binomial" in binary logistic regression models. To define the model formula like `y ~ x1 + x2 + ...` where `y` is the target variable which is interested features to predict and `x`s are the features that used the information to predict the target variable.
+
+There is a tip about the model formula: you can use `y ~.` instead of defining all features you want to input to the model.
+
+```{r}
+lr_model <- glm(survived ~ ., data = train, family = "binomial")
+```
+
+In above, we train a linear regression model by using the `train` data that we splited in previous step and the model formula. Then, we assigned the output of `glm()` function to the `lr_model` object. Do not forget that you can give another name to the model object whatever you want, because it is just an object!
+
+Let see the output of the model:
+
+```{r}
+lr_model
+```
+
+Model output returns the information about model formula, train data, and the estimated values of model parameters under the `Coefficients` title. You can see the numeric (continuous) features with its name, but the categorical features with `its name + name of the category` such as `districtOchota`.
+
+If you want to see more detail about the model, use the `summary()` function.
+
+```{r}
+summary(lr_model)
+```
+
+It returns some statistics about the model significance such as null and residual deviances.
+
+## Step 3 - Measuring model performance
+
+It is necessary to check the model performance of the model on test set. Because we are interested to train such a model has a good generalizability performance. To do this, we first calculate the predicted values of the target variable on test set.
+
+Do not forget to exclude the true values of the target variable from the test set!
+
+```{r}
+predicted_probs <- predict(lr_model, test[,-8], type = "response")
+head(predicted_probs)
+```
+
+
+The `predicted_probs` vector has the predicted survive probability of the passengers. To measure the model performance, we transform the probabilities to classes.
+
+```{r}
+predicted_classes <- ifelse(predicted_probs > 0.5, 1, 0)
+head(predicted_classes)
+```
+
+Now, we can calculate the metrics based on the confusion matrix. Assume that 1 is the positive and 0 is the negative class.
+
+```{r}
+TP <- sum(predicted_classes[which(test$survived == "yes")] == 1)
+FP <- sum(predicted_classes[which(test$survived == "yes")] == 0)
+TN <- sum(predicted_classes[which(test$survived == "no")] == 0)
+FN <- sum(predicted_classes[which(test$survived == "no")] == 1)
+
+recall      <- TP / (TP + FN)
+specificity <- TN / (TN + FP)
+precision   <- TP / (TP + FP)
+accuracy    <- (TN + TP) / (TP + FP + TN + FN)
+
+recall
+specificity
+precision
+accuracy
+```
+
+According to the values of performance metrics, the model classifies the observations with 0.82 accuracy. Its precision is 0.6 means that the model classify only $60\%$ of the positive class, which is survived passengers in the problem, correctly. In practice this level of performance may not be satisfied. 
+
+In that case, we must check the imbalancedness of the classes in the target feature.
+
+```{r}
+table(train$survived) / dim(train)[1]
+```
+
+It is seen that, the classes of the target feature is not balanced. Thus, it may cause that the model can learn less from the minority class, so the model could not achieve a satisfying performance on classifying of the minority class. In that case, some solution ways can be performed based on the balancing of imbalanced classes of the target variable. 
+
+We will learn these ways in next weeks! 
+
+The following steps to calculate the metrics are not user-friendly. Of course, there are many ready-to-use function to calcute these metrics in just a line of code. One of them is `confusionMatrix()` function in the `{caret}` package which is one of the most popular ML package in R.
+
+This function requires an obligatory and an optional argument that you should check its value carefully. First one is a table that contains the observed and predicted class of the target variable, and the second is the positive class label. If you do not specify it, the function takes the first observations as reference. For example, you can try this while removing the second argument.
+
+Let's calculate the confusion matrix and performance metrics.
+
+```{r}
+confusionMatrix(table(ifelse(test$survived == "yes", "1", "0"),
+                      predicted_classes),
+                positive = "1")
+```
+
+In the output of the function, you can see some new statistics that you may not see before. The most commonly used ones are Accuracy, Sensitivity (Recall), Specificity, and Balanced Accuracy. 
+
+If you want to learn more about the outputs, you can check its manual: https://rdrr.io/cran/caret/man/confusionMatrix.html
+
+
+## ROC Curve
+
+To obtain a ROC curve is not an easy task in R. We can draw it by following a few of steps.
+
+```{r, warning = FALSE, message = FALSE}
+# Create an explainer (an onject in DALEX universe) 
+explain_lr <- explain(model   = lr_model,               # trained model 
+                      data    = test[, -8],             # test set without target 
+                      y       = test$survived == "yes", # observed values of target
+                                                        # with reference class
+                      type    = "classification",       # type of task
+                      verbose = FALSE)                  # remove some messages
+
+```
+
+
+
+
+Then we can use `model_performance()` function from `{DALEX}` package with explainer object that we created above to draw ROC curves and some others.
+
+```{r}
+performance_lr <- model_performance(explain_lr)
+plot(performance_lr, geom = "roc")
+```
+
+To calculate the area under the curve (AUC) value, just print the `performance_lr` object! 
+
+```{r}
+performance_lr
+```
+
+It is about 0.81 means that the area under the curve is equal to 0.81 because the axes range between 0 and 1. Thus the maximum value of auc can be 1, and it means that the model performance is perfect ($100\%$ accuracy)! 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

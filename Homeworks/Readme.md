@@ -1,6 +1,6 @@
 Homeworks
 
-HW #1: Regression task - Assigns on Mar 13 - Deadline  Mar 20
+HW #1: Regression task - Assigns on Mar 13 - Deadline  Mar 25
 
 HW #2: Classification task - Assigns on Apr 3 - Deadline Apr 10
 

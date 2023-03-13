@@ -20,7 +20,7 @@ This a undergraduate course repository of Machine Learning Methods and Applicati
 **Week 2.** Supervised Learning: Linear regression models - Mar 6, 2023 - 14.00 - 📖 [Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week2.pdf) -  :computer: [Applications](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/Application/I%CC%87ST438-W2.pdf) -  📺 [Video](https://youtu.be/WuwSH4ALTbA)
 
 
-**Week 3.** Supervised Learning: Supervised Learning: Logistic regression models - Mar 13, 2023 - 14.00 - 📖 [Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week3.pdf) -  :computer: [Applications](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Application/W3)
+**Week 3.** Supervised Learning: Supervised Learning: Logistic regression models - Mar 13, 2023 - 14.00 - 📖 [Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week3.pdf) -  :computer: [Applications](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Application/W3) -  📺 [Video](https://www.youtube.com/watch?v=8uJFZjEL1hA) - :warning: [Homework I](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Homeworks/HW%231)
 
 
 **Week 4.** Supervised Learning: Visualizing model performance, Feature engineering, Resampling methods - Mar 20, 2023 - 14.00

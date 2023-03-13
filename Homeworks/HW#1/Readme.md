@@ -25,7 +25,7 @@ Task 3: BT, EA, AA, MY, EB, BÇ
 
 Task 4: GA, SÖ, FK, BEA, YÖ, BYÖ
 
-Task 5: ET, BÇ, BT, MAT, FG, ZÖ
+Task 5: ET, BÇ, BuT, MAT, FG, ZÖ
 
 
 ## Instructions

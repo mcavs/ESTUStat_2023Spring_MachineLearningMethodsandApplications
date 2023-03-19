@@ -1,0 +1,258 @@
+---
+title: "IST438-W4-Applications"
+date:  "Mar 20, 2023"
+format: pdf
+editor: visual 
+---
+
+# Model validation and pre-processing 
+
+In this application, we will interest to get more predictions of model performance and using some pre-processing steps:
+
+-   Model validation techniques
+-   Handling missing data
+-   Transformations
+
+# Packages
+
+We need to install `{naniar}` and `{DALEX}` package to use functions to handle missing data and `titanic` data set in applications. Please use the two-step codes below: (1) install, (2) load the package.
+
+```{r, warning = FALSE, message = FALSE}
+#install.packages("caret") 
+#install.packages("naniar") 
+#install.packages("DALEX")
+library(caret)
+library(naniar)
+library(DALEX)
+```
+
+
+# 1. MODEL VALIDATION
+
+In here, we can focus on the predicting survive status of titanic passengers.
+
+You can use `trainControl()` function in `{caret}` package to configurate the validation way. Then `train()` function to train a logistic regression model. Let's follow the steps below:
+
+* 1. Obtain the method and the parameters belonging to.
+* 2. Train model considering the previous step.
+
+```{r}
+set.seed(123)
+control <- trainControl(method = "cv",
+                        number = 10)
+model <- train(as.factor(survived) ~., # model formula
+               data = titanic_imputed, # all data (not train data!)
+               trControl = control,    # validation setup
+               method = "glm")         # method you used to train model
+
+```
+
+
+Let's see the model output:
+
+```{r}
+model
+```
+
+It returns the model used, dimension of data set, and some info about the folds. If you want to see more details about the process:
+
+```{r}
+model$resample
+model$results
+```
+
+It is seen that the model performance looks stable because the accuracy values of the model changes between 0.74 and 0.82 in folds. The average accuracy is about 0.80.
+
+We can also validate the model by using the LOOCV method. It may takes for a while because the LOOCV method is computationally expensive.
+
+```{r}
+set.seed(123)
+control <- trainControl(method = "LOOCV",
+                       savePredictions = TRUE)
+
+model <- train(as.factor(survived) ~., # model formula
+               data = titanic_imputed, # all data (not train data!)
+               trControl = control,    # validation setup
+               method = "glm")         # method you used to train model
+
+```
+
+
+```{r}
+model
+```
+
+If you want to discover more about the package, visit here: https://topepo.github.io/caret/
+
+
+# 2. MISSING DATA
+
+The easiest way to check the missing values in data:
+
+```{r}
+anyNA(titanic)
+```
+
+## 2.1. Missing data summaries
+
+We can summarizes the missing values in vector or data frame format. To summarize the missing values in a data set, `{naniar}` provides very useful functions as below:
+
+* `n_miss()` returns number of missing values in data set
+* `n_complete()` returns number of completed (aka not missing) values in data set
+* `miss_var_summary()` returns number and percentage of missing values in data set for each variable
+* `miss_case_summary()` returns number and percentage of missing values in data set for each observation
+
+```{r}
+n_miss(titanic)
+n_complete(titanic)
+miss_var_summary(titanic)
+miss_case_summary(titanic)
+```
+
+* `miss_var_table()` returns a summary table consists number and percentage of missing values over variables.
+
+```{r}
+miss_var_table(titanic)
+```
+
+The table shows that there are four variables do not have and missing values, and the other variables have different number of missing values. 
+
+We can visualize the missing values to see the big picture! 
+
+```{r}
+vis_miss(titanic)
+```
+
+The graph above shows that the $0.6\%$ of the observations is missing. Most of these missing values is in the `country` feature (aka variable). Also, the variables `fare`, `sibsp`, `parch`, and `age` have some missing values.
+
+We can also visualize the missing values by variable and observation level.
+
+```{r}
+gg_miss_var(titanic)
+gg_miss_case(titanic)
+```
+
+## 2.2. Deletion (Removing)
+
+```{r}
+titanic <- titanic[complete.cases(titanic), ]
+```
+
+
+## 2.3. Imputation
+
+Imputation can be done for a single feature or all data observations. Let's try to impute a feature first:
+
+```{r}
+data(titanic) # call the data again because we deleted the observation 
+              # in previous subsection
+
+titanic$age[is.na(titanic$age)] <- median(titanic$age, na.rm = TRUE)
+```
+
+You can use `preProcess()` function from `{caret}` package to impute the missing values in all data:
+
+```{r}
+data(titanic)
+
+impute_mean <- preProcess(titanic, method = "medianImpute")
+titanic_imp <- predict(impute_mean, titanic) 
+```
+
+Let's check it is done:
+
+```{r}
+anyNA(titanic_imp)
+```
+
+There is still some missing values in the data set, but they are in categorical features. Because the imputation methods based on mean, median, and etc. do not work with categorical features. In the categorical variables, you can impute missing values with the most frequently seen class in the complete part of the feature.
+
+
+# 3. TRANSFORMATIONS
+
+Let's check the scale of the features in `titanic_imputed` data set.
+
+```{r}
+summary(titanic_imputed)
+```
+
+It is seen that the scale of `age` and `fare` is quite different. The scale of `age` is between 0 and 74, while the scale of `fare` is between 0 and 512. They are not in same/similar scale. This may be effective on the model performance. 
+
+You can try to transform the data set then compare the model performance with and without transformations.
+
+
+## 3.1. Min-max transformation
+
+Min-max transformation maps the values of feature to the interval of [0, 1]. `preProcess()` function from `{caret}` package can be used to transform the data set. It is needed to set `="range"` the `method` argument in the function to use the min-max transformation.
+
+```{r}
+pp <- preProcess(titanic_imputed[, -8], method = "range")
+scaled_titanic <- cbind(predict(pp, titanic_imputed[, -8]), survived = titanic_imputed[,8])
+
+set.seed(123) # for reproducibility
+index <- sample(1 : nrow(titanic_imputed), round(nrow(titanic_imputed) * 0.80))
+train_scaled <- scaled_titanic[index, ]
+test_scaled  <- scaled_titanic[-index, ]
+train <- titanic_imputed[index, ]
+test  <- titanic_imputed[-index, ]
+
+
+model_scaled <- glm(survived ~ ., data = train_scaled, family = "binomial")
+predicted_probs_scaled <- predict(model_scaled, test_scaled[,-8], type = "response")
+predicted_classes_scaled <- ifelse(predicted_probs_scaled > 0.5, 1, 0)
+
+confusionMatrix(table(test$survived,
+                      predicted_classes_scaled),
+                positive = "1")
+```
+
+
+Let's compare the model performance with the model trained on untransformed data.
+
+```{r}
+model <- glm(survived ~ ., data = train, family = "binomial")
+
+predicted_probs <- predict(model, test[,-8], type = "response")
+
+predicted_classes <- ifelse(predicted_probs > 0.5, 1, 0)
+
+confusionMatrix(table(test$survived,
+                      predicted_classes),
+                positive = "1")
+```
+
+It is seen that the performance of the models are totally same! This means that there is no change seen in the model performance after scaling.
+
+
+## 3.2. Normalization 
+
+Normalization transformation maps the values of feature to normalize. `preProcess()` function from `{caret}` package can be used to transform the data set. It is needed to set `=c("center", "scale")` the `method` argument in the function to use the normalization transformation.
+
+```{r}
+pp <- preProcess(train[, -8], method = c("center", "scale"))
+centered_titanic <- cbind(predict(pp, titanic_imputed[, -8]), survived = titanic_imputed[,8])
+train_centered <- centered_titanic[index, ]
+test_centered  <- centered_titanic[-index, ]
+
+
+model_centered <- glm(survived ~ ., data = train_centered, family = "binomial")
+predicted_probs_centered <- predict(model_centered, test_centered[,-8], type = "response")
+predicted_classes_centered <- ifelse(predicted_probs_centered > 0.5, 1, 0)
+
+confusionMatrix(table(test$survived,
+                      predicted_classes_centered),
+                positive = "1")
+```
+
+It is also seen that the performance of the models are totally same! This means that there is no change seen in the model performance after normalization.
+
+
+
+
+
+
+
+
+
+
+

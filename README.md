@@ -23,7 +23,7 @@ This a undergraduate course repository of Machine Learning Methods and Applicati
 **Week 3.** Supervised Learning: Supervised Learning: Logistic regression models - Mar 13, 2023 - 14.00 - 📖 [Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week3.pdf) -  :computer: [Applications](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Application/W3) -  📺 [Video](https://www.youtube.com/watch?v=8uJFZjEL1hA) - :warning: [Homework I](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Homeworks/HW%231)
 
 
-**Week 4.** Model validation and pre-processing - Mar 20, 2023 - 14.00
+**Week 4.** Model validation and pre-processing - Mar 20, 2023 - 14.00- 📖 [Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week4.pdf) -  :computer: [Applications](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Application/W4)
 
 
 **Week 5.** Supervised Learning: Classification Trees - Apr 3, 2023 - 14.00

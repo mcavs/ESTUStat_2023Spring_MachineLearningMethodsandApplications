@@ -4,7 +4,7 @@ This a undergraduate course repository of Machine Learning Methods and Applicati
 
 ## Connect 
 
-[Zoom](https://us05web.zoom.us/j/7869396483?pwd=U3pHRTFqNTlpRmd3a25rSklnMEZ1QT09)
+[Google Meet](https://meet.google.com/uje-stea-jsd)
 
 ## Books 📚
 

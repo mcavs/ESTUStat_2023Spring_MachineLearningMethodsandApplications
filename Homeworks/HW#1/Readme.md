@@ -15,7 +15,7 @@ Task 5: Prediction of second-hand car prices (https://www.kaggle.com/datasets/ma
 
 ## Assignments
 
-You can find your assignment with your initial (Example: the inial for Ali Yılmaz is AY). The tasks are assigned you randomly. 
+You can find your assignment with your initial (Example: the initial for Ali Yılmaz is AY). The tasks are assigned you randomly. 
 
 Task 1: EK, RK, HK, ŞG, ŞT, GG
 
@@ -41,7 +41,8 @@ Task 5: ET, BÇ, BuT, MAT, FG, ZÖ
 ## Grading
 
 * Please prepare a report in PDF format by using Quarto or Jupyter Notebook (**no any other pubishing way or tool!**)  with R / Python consisting the points in the instructions in your task.
-* The report must be submitted until Mar 25, 23:59 to this repository with your initial. **Late submissions are not be evaluated.**
+* The report named with your initial must be submitted until Mar 25, 23:59 to this repository. **Late submissions are not be evaluated.**
+* To make a submission, let me know your GitHub username to add you as a collaborator.
 * All items in the instructions must be done with interpretated (Explain what you did and find). 
 * **The assignment will not be evaluated if any of the above items are not met.**
 

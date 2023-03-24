@@ -16,15 +16,15 @@ Task 5: Fraud detection (https://www.kaggle.com/datasets/jainilcoder/online-paym
 
 You can find your assignment with your initial (Example: the initial for Ali Yılmaz is AY). The tasks are assigned you randomly. 
 
-Task 1: 
+Task 1: BÇ, EB, BuT, ÖNT, AA, RK
 
-Task 2: 
+Task 2: EA, ET, MY, BÇ, MEA, HK, BA
 
-Task 3: 
+Task 3: YÖ, MD, Sİ, FG, BYÖ, HD
 
-Task 4: 
+Task 4: BT, DRB, ZÖ, ŞT, EK, MAT
 
-Task 5: 
+Task 5: GA, FK, SÖ, BEA, ŞG, GG
 
 
 ## Instructions

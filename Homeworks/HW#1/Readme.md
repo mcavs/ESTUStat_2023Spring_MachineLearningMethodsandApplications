@@ -17,7 +17,7 @@ Task 5: Prediction of second-hand car prices (https://www.kaggle.com/datasets/ma
 
 You can find your assignment with your initial (Example: the initial for Ali Yılmaz is AY). The tasks are assigned you randomly. 
 
-Task 1: EK, RK, HK, ŞG, ŞT, GG
+Task 1: EK, RK, HK, ŞG, ŞT, GG, BA
 
 Task 2: DRB, Sİ, HD, MEA, MD, ÖNT
 

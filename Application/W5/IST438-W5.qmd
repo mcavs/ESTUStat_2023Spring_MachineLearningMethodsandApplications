@@ -1,0 +1,296 @@
+---
+title: "IST438-W5-Applications"
+date:  "Mar 27, 2023"
+format: html
+editor: visual 
+---
+
+# Decision trees
+
+In this application, we will train decision trees for regression and classification tasks.
+
+
+# Packages
+
+We need to install `{tidymodels}` package to train decision tree models. It is one of the most famous ML package in R because it consists many tools which are used in ML process:
+
+* `{rsample}` is used to split dataset: `initial_split()`
+* `{recipes}` for feature engineering
+* `{parnship}` model fitting
+* `{tune}` model tuning
+* `{yardstick}` model evaluation
+
+
+Please use the two-step codes below: (1) install, (2) load the package.
+
+```{r, warning = FALSE, message = FALSE}
+#install.packages("tidymodels") # training models
+#install.packages("DALEX").     # datasets
+#install.packages("rpart.plot") # visualizing decision tree
+library(tidymodels)
+library(DALEX)
+library(rpart.plot)
+```
+
+
+# Dataset
+
+`apartments` and `titanic` datasets are used in application to compare the performance of the regression models and decision trees.
+
+
+# Model training with `{tidymodels}` for regression task
+
+Data splitting:
+
+```{r}
+apartments_split <- initial_split(data = apartments, # dataset to split
+                                  prop = 0.80)    # proportion of train set
+
+apartments_train <- apartments_split |> training()
+apartments_test  <- apartments_split |> testing()
+```
+
+
+Model specification:
+
+* `type`: model type, e.g. regression, decision tree or etc. 
+* `engine`: different R packages have engines
+* `mode`: learning task, e.g. regression or classification
+
+Defining model specification:
+
+```{r}
+dt_model <- decision_tree() |> # try linear_reg()
+  set_engine("rpart") |>       # and lm
+  set_mode("regression")
+```
+
+
+Model training:
+
+```{r}
+dt_apartments <- dt_model |> 
+  fit(m2.price ~., data = apartments_train)
+dt_apartments
+```
+
+
+Visualizing the decision tree:
+
+```{r}
+rpart.plot(dt_apartments$fit)
+```
+
+
+Make predictions by using the trained model:
+
+```{r}
+apartments_predictions <- dt_apartments |> 
+  predict(new_data = apartments_test)
+
+apartments_predictions
+```
+
+
+Evaluating model performance:
+
+`{yardstick}` package is used to evaluate/measure the model performance. Its functions require a data.frame or tibble with model results. To combine the model prediction and actual/observed values of target variable in test data, `cbind()` function can be used as follows:
+
+```{r}
+apartments_results <- tibble(predicted = apartments_predictions$.pred,
+                             actual    = apartments_test$m2.price)
+
+apartments_results
+```
+
+Then we can calculate the RMSE of the model by using `rmse()` function with obligatory arguments: `truth` must be assigned with actual values, `estimate` must be assigned with predicted values of target variable.
+
+```{r}
+apartments_results |> rmse(truth = actual, estimate = predicted)
+```
+
+$R^2$ metric can be calculated in similar manner by `rsq()` function:
+
+```{r}
+apartments_results |> rsq(truth = actual, estimate = predicted)
+```
+
+Streaming model fitting by `last_fit()` function. It takes a model specification, model formula, and data split object.
+
+```{r}
+apartments_last_fit <- dt_model |>
+  last_fit(m2.price ~., split = apartments_split)
+
+apartments_last_fit
+```
+
+Collecting metrics: 
+
+```{r}
+apartments_last_fit |> collect_metrics()
+```
+
+Collecting predictions:
+
+```{r}
+apartments_last_fit |> collect_predictions()
+```
+
+
+# Model training with `{tidymodels}` for classification  task
+
+```{r}
+set.seed(123)
+titanic_split <- initial_split(data = titanic, # dataset to split
+                               prop = 0.80)    # proportion of train set
+
+titanic_train <- titanic_split |> training()
+titanic_test  <- titanic_split |> testing()
+```
+
+Model specification:
+
+* `type`: model type, e.g. regression, decision tree or etc. 
+* `engine`: different R packages have engines
+* `mode`: learning task, e.g. regression or classification
+
+Defining model specification:
+
+```{r}
+dt_model <- decision_tree() |>
+  set_engine("rpart") |>
+  set_mode("classification")
+```
+
+Model training:
+
+```{r}
+dt_titanic <- dt_model |> 
+  fit(survived ~., data = titanic_train)
+
+dt_titanic
+```
+
+Visualizing the decision tree:
+
+```{r}
+rpart.plot(dt_titanic$fit)
+```
+
+
+Make predictions by using the trained model. If you want to calculate the predicted probabilities, it is necessary to assign the `type` argument as `"prob"`.
+
+```{r}
+titanic_predictions <- dt_titanic |> 
+  predict(new_data = titanic_test)
+
+titanic_predictions
+
+```
+
+
+If you want to calculate the predicted probabilities, it is necessary to assign the `type` argument as `"prob"`.
+
+```{r}
+dt_titanic |> 
+  predict(new_data = titanic_test,
+          type     = "prob")
+```
+
+
+Evaluating model performance:
+
+`{yardstick}` package is used to evaluate/measure the model performance. Its functions require a data.frame or tibble with model results. To combine the model prediction and actual/observed values of target variable in test data, `cbind()` function can be used as follows:
+
+```{r}
+titanic_results <- tibble(predicted = titanic_predictions$.pred_class,
+                          actual    = titanic_test$survived)
+```
+
+Then we can calculate the RMSE of the model by using `rmse()` function with obligatory arguments: `truth` must be assigned with actual values, `estimate` must be assigned with predicted values of target variable.
+
+```{r}
+titanic_results |> conf_mat(truth    = actual,
+                            estimate = predicted)
+```
+
+The `accuracy` metric can be calculated in similar manner by `accuracy()` function:
+
+```{r}
+titanic_results |> accuracy(truth = actual, estimate = predicted)
+```
+
+The `sensitivity` metric can be calculated in similar manner by `sens()` function:
+
+```{r}
+titanic_results |> sens(truth = actual, estimate = predicted)
+titanic_results |> spec(truth = actual, estimate = predicted)
+```
+
+`{tidymodels}` ecosystem provides many binary classification metrics:
+
+* `accuracy()`
+* `kap()`
+* `sens()`
+* `spec()`
+* `ppv()`
+* `npv()`
+* `mcc()`
+* `j_index()`
+* `bal_accuracy()`
+* `detection_prevalence()`
+* `precision()`
+* `recall()`
+* `f_meas()`
+
+Streaming model fitting by `last_fit()` function. It takes a model specification, model formula, and data split object.
+
+```{r}
+titanic_last_fit <- dt_model |>
+  last_fit(survived ~., split = titanic_split)
+```
+
+Collecting metrics: 
+
+```{r}
+titanic_last_fit |> collect_metrics()
+```
+
+Collecting predictions:
+
+```{r}
+titanic_last_fit |> collect_predictions()
+```
+
+# Model validation 
+
+```{r}
+set.seed(123)
+titanic_folds <- vfold_cv(titanic_train,
+                          v = 10)
+titanic_folds
+```
+
+```{r}
+titanic_wf <- workflow() |>
+  add_model(dt_model) |>
+  add_formula(survived ~.)
+```
+
+```{r}
+titanic_fit_cv <- titanic_wf |> 
+  fit_resamples(titanic_folds)
+```
+
+You can see the mean values of metrics over folds:
+
+```{r}
+titanic_fit_cv |> collect_metrics()
+```
+
+Or you can check the metric values for each fold:
+
+```{r}
+titanic_fit_cv |> collect_metrics(summarize = FALSE)
+```
+

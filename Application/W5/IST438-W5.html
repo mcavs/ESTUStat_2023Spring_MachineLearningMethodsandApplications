@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2023-03-27">
+
+<title>IST438-W5-Applications</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="IST438-W5_files/libs/clipboard/clipboard.min.js"></script>
+<script src="IST438-W5_files/libs/quarto-html/quarto.js"></script>
+<script src="IST438-W5_files/libs/quarto-html/popper.min.js"></script>
+<script src="IST438-W5_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="IST438-W5_files/libs/quarto-html/anchor.min.js"></script>
+<link href="IST438-W5_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="IST438-W5_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="IST438-W5_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="IST438-W5_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="IST438-W5_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">IST438-W5-Applications</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 27, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="decision-trees" class="level1">
+<h1>Decision trees</h1>
+<p>In this application, we will train decision trees for regression and classification tasks.</p>
+</section>
+<section id="packages" class="level1">
+<h1>Packages</h1>
+<p>We need to install <code>{tidymodels}</code> package to train decision tree models. It is one of the most famous ML package in R because it consists many tools which are used in ML process:</p>
+<ul>
+<li><code>{rsample}</code> is used to split dataset: <code>initial_split()</code></li>
+<li><code>{recipes}</code> for feature engineering</li>
+<li><code>{parnship}</code> model fitting</li>
+<li><code>{tune}</code> model tuning</li>
+<li><code>{yardstick}</code> model evaluation</li>
+</ul>
+<p>Please use the two-step codes below: (1) install, (2) load the package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tidymodels") # training models</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("DALEX").     # datasets</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("rpart.plot") # visualizing decision tree</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DALEX)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dataset" class="level1">
+<h1>Dataset</h1>
+<p><code>apartments</code> and <code>titanic</code> datasets are used in application to compare the performance of the regression models and decision trees.</p>
+</section>
+<section id="model-training-with-tidymodels-for-regression-task" class="level1">
+<h1>Model training with <code>{tidymodels}</code> for regression task</h1>
+<p>Data splitting:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>apartments_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(<span class="at">data =</span> apartments, <span class="co"># dataset to split</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">prop =</span> <span class="fl">0.80</span>)    <span class="co"># proportion of train set</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>apartments_train <span class="ot">&lt;-</span> apartments_split <span class="sc">|&gt;</span> <span class="fu">training</span>()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>apartments_test  <span class="ot">&lt;-</span> apartments_split <span class="sc">|&gt;</span> <span class="fu">testing</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Model specification:</p>
+<ul>
+<li><code>type</code>: model type, e.g.&nbsp;regression, decision tree or etc.</li>
+<li><code>engine</code>: different R packages have engines</li>
+<li><code>mode</code>: learning task, e.g.&nbsp;regression or classification</li>
+</ul>
+<p>Defining model specification:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dt_model <span class="ot">&lt;-</span> <span class="fu">decision_tree</span>() <span class="sc">|&gt;</span> <span class="co"># try linear_reg()</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"rpart"</span>) <span class="sc">|&gt;</span>       <span class="co"># and lm</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Model training:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dt_apartments <span class="ot">&lt;-</span> dt_model <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(m2.price <span class="sc">~</span>., <span class="at">data =</span> apartments_train)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>dt_apartments</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>parsnip model object
+
+n= 800 
+
+node), split, n, deviance, yval
+      * denotes terminal node
+
+ 1) root 800 682975900 3500.510  
+   2) district=Bemowo,Bielany,Praga,Ursus,Ursynow,Wola 483 175038600 3021.739  
+     4) surface&gt;=76.5 274  61087780 2671.325  
+       8) floor&gt;=6.5 121  18570030 2384.752  
+        16) surface&gt;=122.5 49   4161880 2083.204 *
+        17) surface&lt; 122.5 72   6920216 2589.972 *
+       9) floor&lt; 6.5 153  24722090 2897.961  
+        18) surface&gt;=105.5 91  10489850 2709.890 *
+        19) surface&lt; 105.5 62   6289262 3174.000 *
+     5) surface&lt; 76.5 209  36198160 3481.134  
+      10) floor&gt;=4.5 116  13558830 3266.767 *
+      11) floor&lt; 4.5 93  10659890 3748.516 *
+   3) district=Mokotow,Ochota,Srodmiescie,Zoliborz 317 228532900 4229.994  
+     6) district=Mokotow,Ochota,Zoliborz 235  85794550 3880.864  
+      12) surface&gt;=80.5 125  25912720 3519.128  
+        24) floor&gt;=4.5 86  12800780 3345.337 *
+        25) floor&lt; 4.5 39   4786681 3902.359 *
+      13) surface&lt; 80.5 110  24938190 4291.927  
+        26) floor&gt;=4.5 71   8320897 4065.437 *
+        27) floor&lt; 4.5 39   6344533 4704.256 *
+     7) district=Srodmiescie 82  32002730 5230.549  
+      14) surface&gt;=61.5 46  10747650 4842.174 *
+      15) surface&lt; 61.5 36   5450918 5726.806 *</code></pre>
+</div>
+</div>
+<p>Visualizing the decision tree:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(dt_apartments<span class="sc">$</span>fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Cannot retrieve the data used to build the model (so cannot determine roundint and is.binary for the variables).
+To silence this warning:
+    Call rpart.plot with roundint=FALSE,
+    or rebuild the rpart model with model=TRUE.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="IST438-W5_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Make predictions by using the trained model:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>apartments_predictions <span class="ot">&lt;-</span> dt_apartments <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict</span>(<span class="at">new_data =</span> apartments_test)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>apartments_predictions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 200 × 1
+   .pred
+   &lt;dbl&gt;
+ 1 3749.
+ 2 3345.
+ 3 2590.
+ 4 4842.
+ 5 4065.
+ 6 3267.
+ 7 3267.
+ 8 3345.
+ 9 3267.
+10 4065.
+# … with 190 more rows</code></pre>
+</div>
+</div>
+<p>Evaluating model performance:</p>
+<p><code>{yardstick}</code> package is used to evaluate/measure the model performance. Its functions require a data.frame or tibble with model results. To combine the model prediction and actual/observed values of target variable in test data, <code>cbind()</code> function can be used as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>apartments_results <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">predicted =</span> apartments_predictions<span class="sc">$</span>.pred,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">actual    =</span> apartments_test<span class="sc">$</span>m2.price)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>apartments_results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 200 × 2
+   predicted actual
+       &lt;dbl&gt;  &lt;dbl&gt;
+ 1     3749.   3643
+ 2     3345.   3517
+ 3     2590.   2346
+ 4     4842.   4745
+ 5     4065.   3961
+ 6     3267.   3378
+ 7     3267.   3274
+ 8     3345.   3134
+ 9     3267.   3502
+10     4065.   4297
+# … with 190 more rows</code></pre>
+</div>
+</div>
+<p>Then we can calculate the RMSE of the model by using <code>rmse()</code> function with obligatory arguments: <code>truth</code> must be assigned with actual values, <code>estimate</code> must be assigned with predicted values of target variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>apartments_results <span class="sc">|&gt;</span> <span class="fu">rmse</span>(<span class="at">truth =</span> actual, <span class="at">estimate =</span> predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 rmse    standard        363.</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(R^2\)</span> metric can be calculated in similar manner by <code>rsq()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>apartments_results <span class="sc">|&gt;</span> <span class="fu">rsq</span>(<span class="at">truth =</span> actual, <span class="at">estimate =</span> predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 rsq     standard       0.810</code></pre>
+</div>
+</div>
+<p>Streaming model fitting by <code>last_fit()</code> function. It takes a model specification, model formula, and data split object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>apartments_last_fit <span class="ot">&lt;-</span> dt_model <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">last_fit</span>(m2.price <span class="sc">~</span>., <span class="at">split =</span> apartments_split)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>apartments_last_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Resampling results
+# Manual resampling 
+# A tibble: 1 × 6
+  splits            id               .metrics .notes   .predictions .workflow 
+  &lt;list&gt;            &lt;chr&gt;            &lt;list&gt;   &lt;list&gt;   &lt;list&gt;       &lt;list&gt;    
+1 &lt;split [800/200]&gt; train/test split &lt;tibble&gt; &lt;tibble&gt; &lt;tibble&gt;     &lt;workflow&gt;</code></pre>
+</div>
+</div>
+<p>Collecting metrics:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>apartments_last_fit <span class="sc">|&gt;</span> <span class="fu">collect_metrics</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  .metric .estimator .estimate .config             
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
+1 rmse    standard     363.    Preprocessor1_Model1
+2 rsq     standard       0.810 Preprocessor1_Model1</code></pre>
+</div>
+</div>
+<p>Collecting predictions:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>apartments_last_fit <span class="sc">|&gt;</span> <span class="fu">collect_predictions</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 200 × 5
+   id               .pred  .row m2.price .config             
+   &lt;chr&gt;            &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;               
+ 1 train/test split 3749.     3     3643 Preprocessor1_Model1
+ 2 train/test split 3345.     4     3517 Preprocessor1_Model1
+ 3 train/test split 2590.     8     2346 Preprocessor1_Model1
+ 4 train/test split 4842.     9     4745 Preprocessor1_Model1
+ 5 train/test split 4065.    11     3961 Preprocessor1_Model1
+ 6 train/test split 3267.    18     3378 Preprocessor1_Model1
+ 7 train/test split 3267.    19     3274 Preprocessor1_Model1
+ 8 train/test split 3345.    28     3134 Preprocessor1_Model1
+ 9 train/test split 3267.    38     3502 Preprocessor1_Model1
+10 train/test split 4065.    44     4297 Preprocessor1_Model1
+# … with 190 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="model-training-with-tidymodels-for-classification-task" class="level1">
+<h1>Model training with <code>{tidymodels}</code> for classification task</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>titanic_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(<span class="at">data =</span> titanic, <span class="co"># dataset to split</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                               <span class="at">prop =</span> <span class="fl">0.80</span>)    <span class="co"># proportion of train set</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>titanic_train <span class="ot">&lt;-</span> titanic_split <span class="sc">|&gt;</span> <span class="fu">training</span>()</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>titanic_test  <span class="ot">&lt;-</span> titanic_split <span class="sc">|&gt;</span> <span class="fu">testing</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Model specification:</p>
+<ul>
+<li><code>type</code>: model type, e.g.&nbsp;regression, decision tree or etc.</li>
+<li><code>engine</code>: different R packages have engines</li>
+<li><code>mode</code>: learning task, e.g.&nbsp;regression or classification</li>
+</ul>
+<p>Defining model specification:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dt_model <span class="ot">&lt;-</span> <span class="fu">decision_tree</span>() <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"rpart"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Model training:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>dt_titanic <span class="ot">&lt;-</span> dt_model <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(survived <span class="sc">~</span>., <span class="at">data =</span> titanic_train)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>dt_titanic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>parsnip model object
+
+n= 1765 
+
+node), split, n, loss, yval, (yprob)
+      * denotes terminal node
+
+ 1) root 1765 590 no (0.66572238 0.33427762)  
+   2) gender=male 1362 302 no (0.77826725 0.22173275)  
+     4) class=2nd,3rd,engineering crew,restaurant staff,victualling crew 1165 212 no (0.81802575 0.18197425)  
+       8) age&gt;=4.5 1141 196 no (0.82822086 0.17177914) *
+       9) age&lt; 4.5 24   8 yes (0.33333333 0.66666667) *
+     5) class=1st,deck crew 197  90 no (0.54314721 0.45685279)  
+      10) age&gt;=54.5 26   2 no (0.92307692 0.07692308) *
+      11) age&lt; 54.5 171  83 yes (0.48538012 0.51461988)  
+        22) fare&gt;=39.5703 61  20 no (0.67213115 0.32786885) *
+        23) fare&lt; 39.5703 110  42 yes (0.38181818 0.61818182)  
+          46) country=Australia,Cuba,Mexico,Northern Ireland,Scotland,Wales 8   1 no (0.87500000 0.12500000) *
+          47) country=Belgium,Canada,Channel Islands,England,France,Germany,Ireland,Sweden,Switzerland,United States 102  35 yes (0.34313725 0.65686275) *
+   3) gender=female 403 115 yes (0.28535980 0.71464020)  
+     6) class=3rd 184  87 no (0.52717391 0.47282609)  
+      12) fare&gt;=23.07 30   3 no (0.90000000 0.10000000) *
+      13) fare&lt; 23.07 154  70 yes (0.45454545 0.54545455)  
+        26) country=Belgium,Croatia,Croatia (Modern),Sweden 27   6 no (0.77777778 0.22222222) *
+        27) country=Denmark,England,Finland,Ireland,Lebanon,Norway,Slovenia,Switzerland,Syria,United States 127  49 yes (0.38582677 0.61417323)  
+          54) age&gt;=39.5 14   2 no (0.85714286 0.14285714) *
+          55) age&lt; 39.5 113  37 yes (0.32743363 0.67256637) *
+     7) class=1st,2nd,restaurant staff,victualling crew 219  18 yes (0.08219178 0.91780822) *</code></pre>
+</div>
+</div>
+<p>Visualizing the decision tree:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(dt_titanic<span class="sc">$</span>fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Cannot retrieve the data used to build the model (so cannot determine roundint and is.binary for the variables).
+To silence this warning:
+    Call rpart.plot with roundint=FALSE,
+    or rebuild the rpart model with model=TRUE.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="IST438-W5_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Make predictions by using the trained model. If you want to calculate the predicted probabilities, it is necessary to assign the <code>type</code> argument as <code>"prob"</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>titanic_predictions <span class="ot">&lt;-</span> dt_titanic <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict</span>(<span class="at">new_data =</span> titanic_test)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>titanic_predictions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 442 × 1
+   .pred_class
+   &lt;fct&gt;      
+ 1 no         
+ 2 yes        
+ 3 no         
+ 4 no         
+ 5 no         
+ 6 no         
+ 7 no         
+ 8 yes        
+ 9 no         
+10 no         
+# … with 432 more rows</code></pre>
+</div>
+</div>
+<p>If you want to calculate the predicted probabilities, it is necessary to assign the <code>type</code> argument as <code>"prob"</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>dt_titanic <span class="sc">|&gt;</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict</span>(<span class="at">new_data =</span> titanic_test,</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">type     =</span> <span class="st">"prob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 442 × 2
+   .pred_no .pred_yes
+      &lt;dbl&gt;     &lt;dbl&gt;
+ 1   0.828      0.172
+ 2   0.0822     0.918
+ 3   0.828      0.172
+ 4   0.828      0.172
+ 5   0.828      0.172
+ 6   0.828      0.172
+ 7   0.828      0.172
+ 8   0.0822     0.918
+ 9   0.828      0.172
+10   0.828      0.172
+# … with 432 more rows</code></pre>
+</div>
+</div>
+<p>Evaluating model performance:</p>
+<p><code>{yardstick}</code> package is used to evaluate/measure the model performance. Its functions require a data.frame or tibble with model results. To combine the model prediction and actual/observed values of target variable in test data, <code>cbind()</code> function can be used as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>titanic_results <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">predicted =</span> titanic_predictions<span class="sc">$</span>.pred_class,</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">actual    =</span> titanic_test<span class="sc">$</span>survived)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then we can calculate the RMSE of the model by using <code>rmse()</code> function with obligatory arguments: <code>truth</code> must be assigned with actual values, <code>estimate</code> must be assigned with predicted values of target variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>titanic_results <span class="sc">|&gt;</span> <span class="fu">conf_mat</span>(<span class="at">truth    =</span> actual,</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">estimate =</span> predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Truth
+Prediction  no yes
+       no  299  47
+       yes  22  74</code></pre>
+</div>
+</div>
+<p>The <code>accuracy</code> metric can be calculated in similar manner by <code>accuracy()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>titanic_results <span class="sc">|&gt;</span> <span class="fu">accuracy</span>(<span class="at">truth =</span> actual, <span class="at">estimate =</span> predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  .metric  .estimator .estimate
+  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
+1 accuracy binary         0.844</code></pre>
+</div>
+</div>
+<p>The <code>sensitivity</code> metric can be calculated in similar manner by <code>sens()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>titanic_results <span class="sc">|&gt;</span> <span class="fu">sens</span>(<span class="at">truth =</span> actual, <span class="at">estimate =</span> predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 sens    binary         0.931</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>titanic_results <span class="sc">|&gt;</span> <span class="fu">spec</span>(<span class="at">truth =</span> actual, <span class="at">estimate =</span> predicted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 spec    binary         0.612</code></pre>
+</div>
+</div>
+<p><code>{tidymodels}</code> ecosystem provides many binary classification metrics:</p>
+<ul>
+<li><code>accuracy()</code></li>
+<li><code>kap()</code></li>
+<li><code>sens()</code></li>
+<li><code>spec()</code></li>
+<li><code>ppv()</code></li>
+<li><code>npv()</code></li>
+<li><code>mcc()</code></li>
+<li><code>j_index()</code></li>
+<li><code>bal_accuracy()</code></li>
+<li><code>detection_prevalence()</code></li>
+<li><code>precision()</code></li>
+<li><code>recall()</code></li>
+<li><code>f_meas()</code></li>
+</ul>
+<p>Streaming model fitting by <code>last_fit()</code> function. It takes a model specification, model formula, and data split object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>titanic_last_fit <span class="ot">&lt;-</span> dt_model <span class="sc">|&gt;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">last_fit</span>(survived <span class="sc">~</span>., <span class="at">split =</span> titanic_split)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Collecting metrics:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>titanic_last_fit <span class="sc">|&gt;</span> <span class="fu">collect_metrics</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  .metric  .estimator .estimate .config             
+  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
+1 accuracy binary         0.844 Preprocessor1_Model1
+2 roc_auc  binary         0.818 Preprocessor1_Model1</code></pre>
+</div>
+</div>
+<p>Collecting predictions:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>titanic_last_fit <span class="sc">|&gt;</span> <span class="fu">collect_predictions</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 442 × 7
+   id               .pred_no .pred_yes  .row .pred_class survived .config       
+   &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt; &lt;fct&gt;       &lt;fct&gt;    &lt;chr&gt;         
+ 1 train/test split   0.828      0.172     3 no          no       Preprocessor1…
+ 2 train/test split   0.0822     0.918    21 yes         yes      Preprocessor1…
+ 3 train/test split   0.828      0.172    22 no          no       Preprocessor1…
+ 4 train/test split   0.828      0.172    28 no          no       Preprocessor1…
+ 5 train/test split   0.828      0.172    42 no          no       Preprocessor1…
+ 6 train/test split   0.828      0.172    43 no          no       Preprocessor1…
+ 7 train/test split   0.828      0.172    47 no          no       Preprocessor1…
+ 8 train/test split   0.0822     0.918    50 yes         yes      Preprocessor1…
+ 9 train/test split   0.828      0.172    53 no          no       Preprocessor1…
+10 train/test split   0.828      0.172    57 no          no       Preprocessor1…
+# … with 432 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="model-validation" class="level1">
+<h1>Model validation</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>titanic_folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(titanic_train,</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">v =</span> <span class="dv">10</span>)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>titanic_folds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#  10-fold cross-validation 
+# A tibble: 10 × 2
+   splits             id    
+   &lt;list&gt;             &lt;chr&gt; 
+ 1 &lt;split [1588/177]&gt; Fold01
+ 2 &lt;split [1588/177]&gt; Fold02
+ 3 &lt;split [1588/177]&gt; Fold03
+ 4 &lt;split [1588/177]&gt; Fold04
+ 5 &lt;split [1588/177]&gt; Fold05
+ 6 &lt;split [1589/176]&gt; Fold06
+ 7 &lt;split [1589/176]&gt; Fold07
+ 8 &lt;split [1589/176]&gt; Fold08
+ 9 &lt;split [1589/176]&gt; Fold09
+10 &lt;split [1589/176]&gt; Fold10</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>titanic_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">|&gt;</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(dt_model) <span class="sc">|&gt;</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_formula</span>(survived <span class="sc">~</span>.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>titanic_fit_cv <span class="ot">&lt;-</span> titanic_wf <span class="sc">|&gt;</span> </span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit_resamples</span>(titanic_folds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can see the mean values of metrics over folds:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>titanic_fit_cv <span class="sc">|&gt;</span> <span class="fu">collect_metrics</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  .metric  .estimator  mean     n std_err .config             
+  &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+1 accuracy binary     0.793    10 0.00672 Preprocessor1_Model1
+2 roc_auc  binary     0.761    10 0.0110  Preprocessor1_Model1</code></pre>
+</div>
+</div>
+<p>Or you can check the metric values for each fold:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>titanic_fit_cv <span class="sc">|&gt;</span> <span class="fu">collect_metrics</span>(<span class="at">summarize =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20 × 5
+   id     .metric  .estimator .estimate .config             
+   &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
+ 1 Fold01 accuracy binary         0.774 Preprocessor1_Model1
+ 2 Fold01 roc_auc  binary         0.688 Preprocessor1_Model1
+ 3 Fold02 accuracy binary         0.774 Preprocessor1_Model1
+ 4 Fold02 roc_auc  binary         0.783 Preprocessor1_Model1
+ 5 Fold03 accuracy binary         0.808 Preprocessor1_Model1
+ 6 Fold03 roc_auc  binary         0.775 Preprocessor1_Model1
+ 7 Fold04 accuracy binary         0.814 Preprocessor1_Model1
+ 8 Fold04 roc_auc  binary         0.779 Preprocessor1_Model1
+ 9 Fold05 accuracy binary         0.797 Preprocessor1_Model1
+10 Fold05 roc_auc  binary         0.798 Preprocessor1_Model1
+11 Fold06 accuracy binary         0.778 Preprocessor1_Model1
+12 Fold06 roc_auc  binary         0.715 Preprocessor1_Model1
+13 Fold07 accuracy binary         0.818 Preprocessor1_Model1
+14 Fold07 roc_auc  binary         0.776 Preprocessor1_Model1
+15 Fold08 accuracy binary         0.767 Preprocessor1_Model1
+16 Fold08 roc_auc  binary         0.746 Preprocessor1_Model1
+17 Fold09 accuracy binary         0.778 Preprocessor1_Model1
+18 Fold09 roc_auc  binary         0.783 Preprocessor1_Model1
+19 Fold10 accuracy binary         0.824 Preprocessor1_Model1
+20 Fold10 roc_auc  binary         0.765 Preprocessor1_Model1</code></pre>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

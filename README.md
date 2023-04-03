@@ -29,25 +29,25 @@ This a undergraduate course repository of Machine Learning Methods and Applicati
 **Week 5.** Supervised Learning: Decision Trees I - Mar 27, 2023 - 14.00 - 📖 [Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week5.pdf) -  :computer: [Applications](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Application/W5) -  📺 [Video]() - :warning: [Homework II](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Homeworks/HW%232)
 
 
-**Week 6.** Supervised Learning: Decision Trees II - Apr 3, 2023 - 14.00
+**Week 6.** Recap - Apr 3, 2023 - 14.00
 
 
 Midterm Exam - Apr 10, 2023 - XX.00
 
 
-**Week 7.** Ensemble Learning: Bagging Trees and Random Forests - Apr 17, 2023 - 14.00
+**Week 7.** Supervised Learning: Decision Trees II - Apr 17, 2023 - 14.00
 
 
-**Week 8.** Ensemble Learning: Boostind Trees and GBM - Apr 24, 2023 - 14.00
+**Week 8.** Ensemble Learning: Bagging Trees and Random Forests - Apr 24, 2023 - 14.00
 
 
-**Week 9.** Unsupervised Learning: Clustering - May 8, 2023 - 14.00
+**Week 9.** Ensemble Learning: Boostind Trees and GBM- May 8, 2023 - 14.00
 
 
-**Week 10.** Unsupervised Learning: Dimension Reduction - May 15, 2023 - 14.00
+**Week 10.**  Unsupervised Learning: Clustering - May 15, 2023 - 14.00
 
 
-**Week 11.** ... - May 22, 2023 - 14.00
+**Week 11.** Unsupervised Learning: Dimension Reduction - May 22, 2023 - 14.00
 
 
 **Week 12.** ... - May 29, 2023 - 14.00

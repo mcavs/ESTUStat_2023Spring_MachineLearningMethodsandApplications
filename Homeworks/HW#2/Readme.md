@@ -10,7 +10,7 @@ Task 3: Customer churn prediction (https://www.kaggle.com/datasets/gauravtopre/b
 
 Task 4: Credit risk prediction (https://www.kaggle.com/datasets/praveengovi/credit-risk-classification-dataset)
 
-Task 5: Fraud detection (https://www.kaggle.com/datasets/jainilcoder/online-payment-fraud-detection)
+Task 5: Fraud detection (https://www.kaggle.com/datasets/jainilcoder/online-payment-fraud-detection) or Cancer detection (https://www.kaggle.com/datasets/reihanenamdari/breast-cancer)
 
 ## Assignments
 

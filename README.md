@@ -32,7 +32,7 @@ This a undergraduate course repository of Machine Learning Methods and Applicati
 **Week 6.** Recap - Apr 3, 2023 - 14.00
 
 
-Midterm Exam - Apr 10, 2023 - XX.00
+Midterm Exam - Apr 10, 2023 - 14.45 - [MS Teams](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZTVkZDUxNzctMDQ2My00N2UyLTk3MDgtZDFiZWJhMDkyNDEy%40thread.v2/0?context=%7b%22Tid%22%3a%22e24840f1-c171-4007-ae2d-ffc773f3119f%22%2c%22Oid%22%3a%2236160ad5-22d1-4172-8774-5694a9ff9ca0%22%7d)
 
 
 **Week 7.** Supervised Learning: Decision Trees II - Apr 17, 2023 - 14.00

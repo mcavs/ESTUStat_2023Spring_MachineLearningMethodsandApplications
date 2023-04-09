@@ -26,7 +26,7 @@ This a undergraduate course repository of Machine Learning Methods and Applicati
 **Week 4.** Model validation and pre-processing - Mar 20, 2023 - 14.00 - 📖 [Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week4.pdf) -  :computer: [Applications](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Application/W4) -  📺 [Video](https://youtu.be/9anRAxdt3qc)
 
 
-**Week 5.** Supervised Learning: Decision Trees I - Mar 27, 2023 - 14.00 - 📖 [Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week5.pdf) -  :computer: [Applications](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Application/W5) -  📺 [Video]() - :warning: [Homework II](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Homeworks/HW%232)
+**Week 5.** Supervised Learning: Decision Trees I - Mar 27, 2023 - 14.00 - 📖 [Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week5.pdf) -  :computer: [Applications](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Application/W5) -  📺 [Video](https://youtu.be/0-gv-Q5NZBs) - :warning: [Homework II](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Homeworks/HW%232)
 
 
 **Week 6.** Recap - Apr 3, 2023 - 14.00

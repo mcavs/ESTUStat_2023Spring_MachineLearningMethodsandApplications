@@ -38,7 +38,7 @@ Midterm Exam - Apr 10, 2023 - 14.45 - [MS Teams](https://teams.microsoft.com/l/m
 **Week 7.** Supervised Learning: Decision Trees II - Apr 17, 2023 - 14.00
 
 
-**Week 8.** Ensemble Learning: Bagging Trees and Random Forests - Apr 24, 2023 - 14.00
+**Week 8.** Ensemble Learning: Bagging Trees and Random Forests - Postponed!
 
 
 **Week 9.** Ensemble Learning: Boostind Trees and GBM- May 8, 2023 - 14.00

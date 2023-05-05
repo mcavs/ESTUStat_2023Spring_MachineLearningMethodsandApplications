@@ -1,0 +1,122 @@
+---
+title: "IST438-W8-Applications"
+date:  "Apr 24, 2023"
+format: pdf
+editor: visual 
+---
+
+# Ensemble Learning: Bagging trees and random forests
+
+In this application, we will practice on tree-based ensemble learning models such as bagging trees and random forests using `{ranger}` package. It provides useful functions for faster implementation of random forests.
+
+```{r}
+# install.packages("ranger")
+library(ranger)
+```
+
+## Dataset
+
+The `PimaIndiansDiabetes` data set as it relates to predicting whether someone has diabetes. This data is provided by the mlbench package.
+
+```{r}
+#install.packages("mlbench")
+library(mlbench)
+data("PimaIndiansDiabetes")
+str(PimaIndiansDiabetes)
+```
+
+The relevant variables are:
+
+`pregnant` - Number of times pregnant
+
+`glucose` - Plasma glucose concentration (glucose tolerance test)
+
+`pressure` - Diastolic blood pressure (mm Hg)
+
+`triceps` - Triceps skin fold thickness (mm)
+
+`insulin` - 2-Hour serum insulin (mu U/ml)
+
+`mass` - Body mass index (weight in kg/(height in m)\^2)
+
+`pedigree` - Diabetes pedigree function
+
+`age` - Age (years)
+
+`diabetes` - Class variable (test for diabetes)
+
+## Splitting
+
+```{r}
+library(rsample)
+set.seed(123)
+diabetes_split <- initial_split(data = PimaIndiansDiabetes, # dataset to split
+                                  prop = 0.80)    # proportion of train set
+
+diabetes_train <- diabetes_split |> training()
+diabetes_test  <- diabetes_split |> testing()
+```
+
+# Training bagging trees
+
+`{ranger}` package has a main function `ranger()` to train bagging trees and random forests. When you set the `mtry` argument is equal to the number of features, the function returns a trained bagging trees.
+
+```{r}
+set.seed(123)
+trained_bt <- ranger(diabetes ~ .,
+                    data = diabetes_train,
+                    mtry = 8)
+```
+
+Let's see the ouput of the model object:
+
+```{r}
+trained_bt
+```
+
+It is seen that the output returns (1) model formula, (2) the values of hyperparameters, and (3) prediction error.
+
+# Training random forests
+
+Random forests model can be trained in same manner. Do not forget to use `set.seed()` in training phase also, because both of the models consists the random process!
+
+```{r}
+set.seed(123) 
+trained_rf <- ranger(diabetes ~ .,
+                     data = diabetes_train)
+```
+
+Let's see the ouput of the model object:
+
+```{r}
+trained_rf
+```
+
+The output is in same type with the bagging trees' one. There are only two differences in the output: (1) the value of `mtry`, and (2) the value of OOB prediction error.
+
+The default value of the hyperparameter `mtry` is calculated according to the formula: $\sqrt{p} = \sqrt{8} \sim 2$ for classification task.
+
+You can discover the effect of other hyperparameters values by tuning them! 
+
+
+# Compare the test performance of the models
+
+```{r}
+library(caret)
+preds_bt <- predict(trained_bt, diabetes_test)
+
+confusionMatrix(preds_bt$predictions,       
+                diabetes_test$diabetes,
+                positive = "pos")
+```
+
+```{r}
+library(caret)
+preds_rf <- predict(trained_rf, diabetes_test)
+
+confusionMatrix(preds_rf$predictions,       
+                diabetes_test$diabetes,
+                positive = "pos")
+```
+
+It is seen that the test set performance of the bagging trees is better than the random forest. Random forest has worse performance especially in sensitivity.

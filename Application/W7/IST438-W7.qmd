@@ -1,0 +1,201 @@
+---
+title: "IST438-W6-Applications"
+date:  "Apr 17, 2023"
+format: pdf
+editor: visual 
+---
+
+# Decision trees - II
+
+In this application, we will train decision trees for regression and classification tasks by tuning the hyperparameters in `rpart()`.
+
+## Dataset
+
+The `PimaIndiansDiabetes` data set as it relates to predicting whether someone has diabetes. This data is provided by the mlbench package.
+
+```{r}
+#install.packages("mlbench")
+library(mlbench)
+data("PimaIndiansDiabetes")
+str(PimaIndiansDiabetes)
+```
+
+The relevant variables are:
+
+`pregnant` - Number of times pregnant
+
+`glucose` - Plasma glucose concentration (glucose tolerance test)
+
+`pressure` - Diastolic blood pressure (mm Hg)
+
+`triceps` - Triceps skin fold thickness (mm)
+
+`insulin` - 2-Hour serum insulin (mu U/ml)
+
+`mass` - Body mass index (weight in kg/(height in m)\^2)
+
+`pedigree` - Diabetes pedigree function
+
+`age` - Age (years)
+
+`diabetes` - Class variable (test for diabetes)
+
+## Splitting
+
+```{r}
+library(rsample)
+diabetes_split <- initial_split(data = PimaIndiansDiabetes, # dataset to split
+                                  prop = 0.80)    # proportion of train set
+
+diabetes_train <- diabetes_split |> training()
+diabetes_test  <- diabetes_split |> testing()
+```
+
+# Hyperparameters
+
+`rpart()` consists many hyperparameters, but we focus on the most commonly used ones as follows:
+
+-   `minsplit`: the minimum number of observations that must exist in a node in order for a split to be attempted.
+
+-   `minbucket`: the minimum number of observations in any terminal node.
+
+-   `cp`: complexity parameter.
+
+-   `maxdepth`: set the maximum depth of any node of the final tree, with the root node counted as depth 0.
+
+The default values of hyperparameters in `rpart()`: `minsplit = 20`, `minbucket = round(minsplit/3)`, `cp = 0.01`, and `maxdepth = 30`.
+
+# Training a vanilla decision tree
+
+```{r}
+library(rpart)
+library(rpart.plot)
+vanilla_dt <- rpart(diabetes ~ .,
+                    data = diabetes_train,
+                    method = "class")
+
+rpart.plot(vanilla_dt)
+```
+
+# Training a less deeper decision tree by tuning `cp`
+
+```{r}
+less_dt1 <- rpart(diabetes ~ .,
+                  data = diabetes_train,
+                  method = "class",
+                  cp = 0.015)
+
+rpart.plot(less_dt1)
+```
+
+# Compare the performance of the vanilla dt and less deeper dt1
+
+```{r}
+library(caret)
+# performance metrics of the vanilla dt
+vanilla_preds <- predict(vanilla_dt, diabetes_test, type = "class")
+
+confusionMatrix(vanilla_preds,       
+                diabetes_test$diabetes,
+                positive = "pos") 
+
+# performance metrics of the less deeper dt
+less_preds1 <- predict(less_dt1, diabetes_test, type = "class")
+
+confusionMatrix(less_preds1,       
+                diabetes_test$diabetes,
+                positive = "pos")
+```
+
+# Training a less deeper decision tree by tuning `minsplit`
+
+```{r}
+less_dt2 <- rpart(diabetes ~ .,
+                  data = diabetes_train,
+                  method = "class",
+                  minsplit = 30)
+
+rpart.plot(less_dt2)
+```
+
+# Compare the performance of the vanilla dt and less deeper dt2
+
+```{r}
+# performance metrics of the vanilla dt
+confusionMatrix(vanilla_preds,       
+                diabetes_test$diabetes,
+                positive = "pos") 
+
+# performance metrics of the less deeper dt2
+less_preds2 <- predict(less_dt2, diabetes_test, type = "class")
+
+confusionMatrix(less_preds2,       
+                diabetes_test$diabetes,
+                positive = "pos")
+```
+
+# Training a deeper decision tree by tuning `cp`
+
+```{r}
+deeper_dt <- rpart(diabetes ~ .,
+                   data = diabetes_train,
+                   method = "class",
+                   cp = 0.001)
+
+rpart.plot(deeper_dt)
+```
+
+# Compare the performance of the vanilla dt, less deeper dt2, deeper tree
+
+```{r}
+# performance metrics of the vanilla dt
+confusionMatrix(vanilla_preds,       
+                diabetes_test$diabetes,
+                positive = "pos") 
+
+# performance metrics of the less deeper dt2
+confusionMatrix(less_preds2,       
+                diabetes_test$diabetes,
+                positive = "pos")
+
+# performance metrics of the deeper tree
+deeper_preds <- predict(deeper_dt, diabetes_test, type = "class")
+
+confusionMatrix(deeper_preds,       
+                diabetes_test$diabetes,
+                positive = "pos")
+```
+
+# Grid search in caret
+
+caret provides many models with the list of hyperparameters: https://topepo.github.io/caret/available-models.html
+
+```{r}
+library(caret)
+fit_control <- trainControl(method = "cv", number = 10)
+
+dt_model <- train(diabetes ~ .,
+                  data = diabetes_train,
+                  method = "rpart",
+                  trControl = fit_control,
+                  tuneGrid = expand.grid(cp = seq(0, 0.1, 0.01)))
+
+plot(dt_model)
+rpart.plot(dt_model$finalModel)
+```
+
+# Random search in caret
+
+```{r}
+library(caret)
+fit_control <- trainControl(method = "cv", number = 10,
+                           search = "random")
+
+dt_model <- train(diabetes ~ .,
+                  data = diabetes_train,
+                  method = "rpart",
+                  trControl = fit_control)
+
+plot(dt_model)
+rpart.plot(dt_model$finalModel)
+```

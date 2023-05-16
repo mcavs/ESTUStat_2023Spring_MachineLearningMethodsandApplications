@@ -41,16 +41,10 @@ Midterm Exam - Apr 10, 2023 - 14.45 - [MS Teams](https://teams.microsoft.com/l/m
 **Week 8.** Ensemble Learning: Bagging Trees and Random Forests - 📖 [Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week8.pdf) -  :computer: [Applications](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Application/W8)
 
 
-**Week 9.** Ensemble Learning: Boostind Trees and GBM- May 8, 2023 - Postponed!
+**Week 9.** Ensemble Learning: Boosting Trees and GBM - May 22, 2023 - 14:00
 
 
-**Week 10.**  Unsupervised Learning: Clustering - May 15, 2023 - 14.00
-
-
-**Week 11.** Unsupervised Learning: Dimension Reduction - May 22, 2023 - 14.00
-
-
-**Week 12.** ... - May 29, 2023 - 14.00
+**Week 10.**  Unsupervised Learning: Clustering - May 29, 2023 - 14.00
 
 
 📧 Contact: Mustafa Cavus, Ph.D. - [mustafacavus@eskisehir.edu.tr](mustafacavus@eskisehir.edu.tr)

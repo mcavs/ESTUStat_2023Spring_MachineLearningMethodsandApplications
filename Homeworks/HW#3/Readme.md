@@ -29,7 +29,11 @@ Task 5: EA, ET, MY, BÇ, MEA, HK, BA
 
 ## Instructions
 
-TBA 
+1. Detail your task with the problem, features, and target.
+2. Describe the dataset in your task in terms of the dimension, variable type, and some other that you want to add.
+3. Train a logistic regression model, a decision tree, and a random forest model.
+4. Compare the performance of the models with a criterion which is independent from the cutoff value.
+5. Use the tools that you learned during the courses to increase the model prediction performance.
 
 
 ## Grading

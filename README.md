@@ -38,7 +38,7 @@ Midterm Exam - Apr 10, 2023 - 14.45 - [MS Teams](https://teams.microsoft.com/l/m
 **Week 7.** Supervised Learning: Decision Trees II - Apr 17, 2023 - 14.00 - 📖 [Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week7.pdf) -  :computer: [Applications](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Application/W7)
 
 
-**Week 8.** Ensemble Learning: Bagging Trees and Random Forests - 📖 [Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week8.pdf) -  :computer: [Applications](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Application/W8)
+**Week 8.** Ensemble Learning: Bagging Trees and Random Forests - 📖 [Notes](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/blob/main/LectureNotes/Week8.pdf) -  :computer: [Applications](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Application/W8) - :warning: [Homework III](https://github.com/mcavs/ESTUStat_2023Spring_MachineLearningMethodsandApplications/tree/main/Homeworks/HW%233)
 
 
 **Week 9.** Ensemble Learning: Boosting Trees and GBM - May 22, 2023 - 14:00

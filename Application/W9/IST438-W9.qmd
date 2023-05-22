@@ -1,0 +1,172 @@
+---
+title: "IST438-W8-Applications"
+date:  "May 8, 2023"
+format: pdf
+editor: visual 
+---
+
+# Ensemble Learning: Boosting trees and GBM
+
+In this application, we will train boosting trees and GBM model.
+
+```{r}
+#install.packages("caret")
+#install.packages("gbm")
+#install.packages("xgboost")
+library(caret)
+library(gbm)
+library(xgboost)
+```
+
+
+## Dataset
+
+The `PimaIndiansDiabetes` data set as it relates to predicting whether someone has diabetes. This data is provided by the mlbench package.
+
+```{r}
+install.packages("mlbench")
+library(mlbench)
+data("PimaIndiansDiabetes")
+str(PimaIndiansDiabetes)
+```
+
+The relevant variables are:
+
+`pregnant` - Number of times pregnant
+
+`glucose` - Plasma glucose concentration (glucose tolerance test)
+
+`pressure` - Diastolic blood pressure (mm Hg)
+
+`triceps` - Triceps skin fold thickness (mm)
+
+`insulin` - 2-Hour serum insulin (mu U/ml)
+
+`mass` - Body mass index (weight in kg/(height in m)\^2)
+
+`pedigree` - Diabetes pedigree function
+
+`age` - Age (years)
+
+`diabetes` - Class variable (test for diabetes)
+
+
+## Splitting
+
+```{r}
+install.packages("rsample")
+library(rsample)
+diabetes_split <- initial_split(data = PimaIndiansDiabetes, # dataset to split
+                                  prop = 0.80)    # proportion of train set
+
+diabetes_train <- diabetes_split |> training()
+diabetes_test  <- diabetes_split |> testing()
+```
+
+
+# Training a GBM model
+
+```{r}
+set.seed(123)
+gbm_fit = train(diabetes ~ .,
+                data = diabetes_train,
+                method = "gbm",
+                trControl = trainControl(method = "cv", number = 5),
+                verbose = FALSE,
+                tuneLength = 10)
+```
+
+
+# Best fit of the GBM model
+
+```{r}
+gbm_fit$bestTune
+```
+
+# Visualization of the GBM model fits
+
+```{r}
+plot(gbm_fit)
+```
+
+
+# Measuring the GBM performance
+
+```{r}
+gbm_preds <- predict(gbm_fit, diabetes_test)
+
+confusionMatrix(gbm_preds,       
+                diabetes_test$diabetes,
+                positive = "pos") 
+```
+
+
+# Training a XGB model
+
+```{r}
+set.seed(123)
+xgb_fit = train(diabetes ~ .,
+                data = diabetes_train,
+                method = "xgbTree",
+                trControl = trainControl(method = "cv", number = 5),
+                verbose = FALSE,
+                tuneLength = 10)
+```
+
+
+# Best fit of the XGB model
+
+```{r}
+xgb_fit$bestTune
+```
+
+
+# Visualization of the XGB model fits
+
+```{r}
+plot(xgb_fit)
+```
+
+
+# Measuring the XGB model performance
+
+```{r}
+xgb_preds <- predict(xgb_fit, diabetes_test)
+
+confusionMatrix(xgb_preds,       
+                diabetes_test$diabetes,
+                positive = "pos") 
+```
+
+
+# Comparing the runtime of the GBM and XGB models
+
+`{microbenchmark}` package is used to analyze the run time of R codes. It works recursively to avoid the systematical delay of the user computation machine such as speed of processor, available memory and etc.
+
+To control the run times  
+
+```{r}
+install.packages("microbenchmark")
+library(microbenchmark)
+```
+
+```{r}
+benc_models <- microbenchmark(train(diabetes ~ .,
+                data = diabetes_train,
+                method = "gbm",
+                trControl = trainControl(method = "cv", number = 5),
+                verbose = FALSE,
+                tuneLength = 10),
+                
+                train(diabetes ~ .,
+                data = diabetes_train,
+                method = "xgbTree",
+                trControl = trainControl(method = "cv", number = 5),
+                verbose = FALSE,
+                tuneLength = 10),
+                
+                times = 10)
+```
+
+
+

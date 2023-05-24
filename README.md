@@ -46,7 +46,7 @@ Midterm Exam - Apr 10, 2023 - 14.45 - [MS Teams](https://teams.microsoft.com/l/m
 
 **Week 10.**  Unsupervised Learning: Clustering - May 29, 2023 - 14.00
 
-Final Exam - Jun 12, 2023 - 15.45 - MS Teams
+Final Exam - Jun 5, 2023 - 13.45 - MS Teams
 
 
 📧 Contact: Mustafa Cavus, Ph.D. - [mustafacavus@eskisehir.edu.tr](mustafacavus@eskisehir.edu.tr)

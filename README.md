@@ -46,7 +46,7 @@ Midterm Exam - Apr 10, 2023 - 14.45 - [MS Teams](https://teams.microsoft.com/l/m
 
 **Week 10.**  Unsupervised Learning: Clustering - May 29, 2023 - 14.00
 
-Final Exam - Jun 5, 2023 - 13.45 - [MS Teams](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZTVkZDUxNzctMDQ2My00N2UyLTk3MDgtZDFiZWJhMDkyNDEy%40thread.v2/0?context=%7b%22Tid%22%3a%22e24840f1-c171-4007-ae2d-ffc773f3119f%22%2c%22Oid%22%3a%2236160ad5-22d1-4172-8774-5694a9ff9ca0%22%7d)
+Final Exam - Jun 5, 2023 - 15.45 - [MS Teams](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZTVkZDUxNzctMDQ2My00N2UyLTk3MDgtZDFiZWJhMDkyNDEy%40thread.v2/0?context=%7b%22Tid%22%3a%22e24840f1-c171-4007-ae2d-ffc773f3119f%22%2c%22Oid%22%3a%2236160ad5-22d1-4172-8774-5694a9ff9ca0%22%7d)
 
 
 📧 Contact: Mustafa Cavus, Ph.D. - [mustafacavus@eskisehir.edu.tr](mustafacavus@eskisehir.edu.tr)

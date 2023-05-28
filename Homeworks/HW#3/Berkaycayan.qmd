@@ -1,0 +1,221 @@
+---
+title: "BerkayCAYAN"
+format: pdf
+editor: visual
+---
+
+
+# Bank Customer Churn Dataset
+
+
+```{r, warning=FALSE, message=FALSE}
+# Packages
+
+library(tidyverse)
+library(caret)
+library(DALEX)
+library(ROCR)
+library(ranger)
+library(rpart)
+library(rpart.plot)
+library(randomForest)
+library(mlbench)
+library(gbm)
+library(xgboost)
+```
+
+## Problem
+
+The problem in this dataset is to predict customer churn. Churn refers to the situation where customers stop using the services of a company or stop being a customer altogether.
+
+```{r, warning=FALSE, message=FALSE}
+# Dataset
+data <- read.csv("/cloud/project/Bank Customer Churn Prediction.csv")
+
+str(data)
+```
+
+## Features
+
+-   CustomerID: Unique identifier for each customer
+-   Surname: Last name of the customer
+-   CreditScore: Credit score of the customer
+-   Geography: The country where the customer resides (e.g., France, Spain, Germany)
+-   Gender: Gender of the customer (Male or Female)
+-   Age: Age of the customer
+-   Tenure: Number of years the customer has been with the bank
+-   Balance: Account balance of the customer
+-   NumOfProducts: Number of products the customer has with the bank
+-   HasCrCard: Whether the customer has a credit card (1 if yes, 0 if no)
+-   IsActiveMember: Whether the customer is an active member (1 if yes, 0 if no)
+-   EstimatedSalary: Estimated salary of the customer
+
+## Target
+
+The target variable in this dataset is "Exited," which indicates whether the customer has churned or not. It is a binary variable, with 1 representing churned customers and 0 representing customers who have not churned.
+
+With this information, you can perform various analyses and predictions related to customer churn using the provided dataset. Let me know if you have any specific questions or analyses in mind
+
+### Logistic regression model
+
+```{r, warning=FALSE, message=FALSE}
+# Create training and test datasets
+set.seed(123) 
+index <- sample(1 : nrow(data), round(nrow(data) * 0.80))
+train <- data[index, ]
+test  <- data[-index, ]
+```
+
+```{r}
+# Create logistic regression model
+
+lr_model <- glm(churn ~ ., data = train, family = "binomial")
+
+summary(lr_model)
+
+```
+
+```{r, warning=FALSE, message=FALSE}
+predicted_probs <- predict(lr_model, test[,-12], type = "response")
+head(predicted_probs)
+
+```
+
+```{r, warning=FALSE, message=FALSE}
+predicted_classes <- ifelse(predicted_probs > 0.5, 1, 0)
+head(predicted_classes)
+```
+
+```{r, warning=FALSE, message=FALSE}
+TP <- sum(predicted_classes[which(test$churn == "1")] == 1)
+FP <- sum(predicted_classes[which(test$churn == "1")] == 0)
+TN <- sum(predicted_classes[which(test$churn == "0")] == 0)
+FN <- sum(predicted_classes[which(test$churn == "0")] == 1)
+recall      <- TP / (TP + FN)
+specificity <- TN / (TN + FP)
+precision   <- TP / (TP + FP)
+accuracy    <- (TN + TP) / (TP + FP + TN + FN)
+recall
+specificity
+precision
+accuracy
+```
+
+```{r}
+table(train$churn) / dim(train)[1]
+```
+
+```{r}
+confusionMatrix(table(ifelse(test$churn == "1", "1", "0"),
+                      predicted_classes),
+                positive = "1")
+```
+
+```{r, warning = FALSE, message = FALSE}
+# Create an explainer (an onject in DALEX universe) 
+explain_lr <- explain(model   = lr_model,               # trained model 
+                      data    = test[, -12],             # test set without target 
+                      y       = test$churn == "1", # observed values of target
+                                                        # with reference class
+                      type    = "classification",       # type of task
+                      verbose = FALSE)                  # remove some messages
+
+```
+
+### The ROC
+
+```{r}
+performance_lr <- model_performance(explain_lr)
+plot(performance_lr, geom = "roc")
+```
+
+```{r}
+performance_lr
+```
+
+```{r}
+train$churn <- as.factor(train$churn)
+rfmodel <- randomForest(churn ~ ., data = train, type = "classification")
+train_predictions <- predict(rfmodel, train)
+print(rfmodel)
+
+```
+
+```{r}
+model <- rpart(churn ~ ., data = data, method = "class")
+
+rpart.plot(model, box.palette = "BuPu", shadow.col = "gray", nn = TRUE)
+
+```
+
+### Training bagging trees
+
+```{r}
+
+set.seed(123)
+trained_bt <- ranger(churn ~ .,
+data = train,
+mtry = 11)
+
+trained_bt
+```
+
+### Training random forests
+
+```{r}
+set.seed(123)
+trained_rf <- ranger(churn ~ .,
+data = train)
+trained_rf
+```
+
+### Bt's confussion matrix
+
+```{r}
+test$churn = as.factor(test$churn)
+preds_bt <- predict(trained_bt, test)
+confusionMatrix(preds_bt$predictions,
+test$churn)
+
+```
+
+### Rf's confussion matrix
+
+```{r}
+preds_rf <- predict(trained_rf, test)
+confusionMatrix(preds_rf$predictions,
+test$churn)
+```
+
+```{r}
+set.seed(123)
+gbm_fit = train(churn ~ .,
+data = train,
+method = "gbm",
+trControl = trainControl(method = "cv", number = 5),
+verbose = FALSE,
+tuneLength = 10)
+gbm_fit$bestTune
+
+```
+
+```{r}
+plot(gbm_fit)
+
+```
+
+### Measuring the GBM performance
+
+```{r}
+gbm_preds <- predict(gbm_fit, test)
+confusionMatrix(gbm_preds,
+test$churn)
+```
+
+### Training XGB model
+
+```{r}
+ctrl <- trainControl(method = "cv", number = 5)
+xgb_model <- train(churn ~ ., data = train, method = "xgbTree", trControl = ctrl)
+print(xgb_model)
+```

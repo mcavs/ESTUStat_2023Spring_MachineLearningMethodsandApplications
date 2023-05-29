@@ -1,0 +1,143 @@
+---
+title: "IST438-W10-Applications"
+date:  "May 15, 2023"
+format: pdf
+editor: visual 
+---
+
+# Unsupervised Learning: Clustering and Dimension Reduction.
+
+In this application, we will do some exercise on clustering and dimension reduction.
+
+# Clustering with k-means method
+
+## Dataset
+
+We will use the `USArrest` dataset from the `{datasets}` package.
+
+```{r}
+str(USArrests)
+```
+
+## k-means
+
+`k-means` is an algorithm used to cluster the data points. It is necessary to set the number of clusters when `kmeans()` function is run.
+
+Let's set the number of cluster is 4 for now. Then we will learn how to obtain the number of clusters.
+
+```{r}
+set.seed(123)
+km <- kmeans(USArrests, 4, nstart = 25)
+```
+
+
+Using the output of `kmeans()` function, we can visualize the data points with the cluster informations they are belonging to.
+
+```{r}
+plot(USArrests, col = km$cluster)
+```
+
+
+There are some additional packages in R to visualize the clusters. `{factoextra}` package provides useful functions to do this.
+
+```{r}
+#install.packages("factoextra")
+library(factoextra)
+
+fviz_cluster(km, data = USArrests)
+```
+
+The center of each cluster is shown by the icons which are used to represent the clusters.
+
+
+## Comparing the k-means models for different number of clusters
+
+The visualizations of the cluster is a kind of way to compare the performance of clustering models. In the following example, we train 6 different models with different number of clusters tuning by the `centers` argument.
+
+```{r}
+k2 <- kmeans(USArrests, centers = 2, nstart = 25)
+k3 <- kmeans(USArrests, centers = 3, nstart = 25)
+k4 <- kmeans(USArrests, centers = 4, nstart = 25)
+k5 <- kmeans(USArrests, centers = 5, nstart = 25)
+k6 <- kmeans(USArrests, centers = 6, nstart = 25)
+k7 <- kmeans(USArrests, centers = 7, nstart = 25)
+
+p1 <- fviz_cluster(k2, geom = "point", data = USArrests) + ggtitle("k = 2")
+p2 <- fviz_cluster(k3, geom = "point", data = USArrests) + ggtitle("k = 3")
+p3 <- fviz_cluster(k4, geom = "point", data = USArrests) + ggtitle("k = 4")
+p4 <- fviz_cluster(k5, geom = "point", data = USArrests) + ggtitle("k = 5")
+p5 <- fviz_cluster(k6, geom = "point", data = USArrests) + ggtitle("k = 6")
+p6 <- fviz_cluster(k7, geom = "point", data = USArrests) + ggtitle("k = 7")
+
+library(gridExtra)
+grid.arrange(p1, p2, p3, p4, p5, p6, nrow = 2)
+```
+
+
+## Determining the optimal k value
+
+There are three most popular methods for determining the optimal number of clusters:
+
+* Elbow method
+* Silhoutte method
+* Gap statistics
+
+The `fviz_nbclust()` function from `{factoextra}` package can be used to use elbow method. There are three arguments we need to specify: (1) dataset, (2) clustering method, (3) to set `method = "wss"`.
+
+```{r}
+fviz_nbclust(USArrests, kmeans, method = "wss")
+```
+
+To conclude the optimal number of cluster by using elbow method, the number of `k` which has the lowest `Total Within Sum of Square` value with the optimal calculation cost. In this example, the optimal number of cluster may be 4 because it has one of the lowest value with the less computational cost. Of course, the number of cluster 10 can be chosen but it has higher computational cost than `k = 4`. That's why the better choice is `k = 4`.
+
+To use the `Sihoutte method`, you can change the set of argument `method = "silhouette"` in `fviz_nbclust()`.
+
+```{r}
+fviz_nbclust(USArrests, kmeans, method = "silhouette")
+```
+
+In this method, the optimal number of cluster is chosen according to the value of `Average silhouette width`. The higher is better. According to the its value, the optimal number of cluster is 2.
+
+So there is an important question is that "The results of two methods in above is contradictory, which one we should follow?"
+
+
+# Dimension reduction with Principle component analysis
+
+In this part, we will use the `swiss` dataset. It is about the standardized fertility measure and socio-economic indicators for each of 47 French-speaking provinces of Switzerland at about 1888. The features are:
+
+* Fertility: common standardized fertility measure
+* Agriculture: % of males involved in agriculture as occupation
+* Examination: % draftees receiving highest mark on army examination
+* Education: % education beyond primary school for draftees
+* Catholic: % catholic
+* Infant.Mortality: live births who live less than 1 year
+
+```{r}
+str(swiss)
+```
+
+Conducting principal component analysis, we can use `prcomp()` function.
+
+```{r}
+swiss.pca = prcomp(swiss[,-1], center = TRUE, scale = TRUE)
+swiss.pca
+```
+
+We can predict the component of an observation by using the `predict()` function.
+
+```{r}
+predict(swiss.pca, swiss[1,])
+```
+
+So we can visualize the contribution of each variable to the components:
+
+```{r}
+library(factoextra); library(ggpubr)
+pc1 <- fviz_contrib(swiss.pca, choice = "var", axes = 1) + ggtitle("PC1")
+pc2 <- fviz_contrib(swiss.pca, choice = "var", axes = 2) + ggtitle("PC1")
+pc3 <- fviz_contrib(swiss.pca, choice = "var", axes = 3) + ggtitle("PC1")
+pc4 <- fviz_contrib(swiss.pca, choice = "var", axes = 4) + ggtitle("PC1")
+pc5 <- fviz_contrib(swiss.pca, choice = "var", axes = 5) + ggtitle("PC1")
+ggarrange(pc1, pc2, pc3, pc4, pc5)
+```
+
